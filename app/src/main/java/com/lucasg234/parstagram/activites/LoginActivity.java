@@ -1,4 +1,4 @@
-package com.lucasg234.parstagram;
+package com.lucasg234.parstagram.activites;
 
 import androidx.appcompat.app.AppCompatActivity;
 
