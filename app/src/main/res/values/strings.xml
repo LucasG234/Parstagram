@@ -8,4 +8,8 @@
     <string name="take_picture_button">Take Picture</string>
     <string name="picture_description">Add a description!</string>
     <string name="picture_submit_button">Submit</string>
+
+    <string name="empty_description">Description cannot be empty.</string>
+    <string name="empty_image">Must add an image to post.</string>
+    <string name="error_image_save">Error saving your image.</string>
 </resources>
