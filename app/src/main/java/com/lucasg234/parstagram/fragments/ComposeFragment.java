@@ -29,11 +29,19 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.File;
 import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
 
+
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link FeedFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
 public class ComposeFragment extends Fragment {
 
     private static final String TAG = "ComposeFragment";
@@ -42,47 +50,30 @@ public class ComposeFragment extends Fragment {
 
     private FragmentComposeBinding mBinding;
     private File mPhotoFile;
-//
-//    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-//    private static final String ARG_PARAM1 = "param1";
-//    private static final String ARG_PARAM2 = "param2";
-//
-//    private String mParam1;
-//    private String mParam2;
+
 
     public ComposeFragment() {
         // Required empty public constructor
     }
 
-//    /**
-//     * Use this factory method to create a new instance of
-//     * this fragment using the provided parameters.
-//     *
-//     * @param param1 Parameter 1.
-//     * @param param2 Parameter 2.
-//     * @return A new instance of fragment ComposeFragment.
-//     */
-//    public static ComposeFragment newInstance(String param1, String param2) {
-//        ComposeFragment fragment = new ComposeFragment();
-//        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment.
+     *
+     * @return A new instance of fragment ComposeFragment.
+     */
+    public static ComposeFragment newInstance() {
+        return new ComposeFragment();
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-//        }
     }
 
     // The onCreateView method is called when Fragment should create its View object hierarchy
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mBinding = FragmentComposeBinding.inflate(inflater, container, false);
         // Inflate the layout for this fragment
@@ -92,7 +83,10 @@ public class ComposeFragment extends Fragment {
     // This event is triggered soon after onCreateView().
     // Any view setup should occur here.  E.g., view lookups and attaching view listeners.
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
+    public void onViewCreated(@NotNull View view, Bundle savedInstanceState) {
+        // Ensure mBinding is still pointing to the correct view
+        mBinding = FragmentComposeBinding.bind(view);
+
         mBinding.buttonSubmitPicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -119,8 +113,6 @@ public class ComposeFragment extends Fragment {
             }
         });
 
-        //TODO
-        //queryPosts();
     }
 
 
@@ -156,24 +148,6 @@ public class ComposeFragment extends Fragment {
                 Log.i(TAG, "Saved post successfully");
                 mBinding.editTextDescription.setText(null);
                 mBinding.imagePostPreview.setImageResource(0);
-            }
-        });
-    }
-
-    private void queryPosts() {
-        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
-        query.include(Post.KEY_USER);
-        query.findInBackground(new FindCallback<Post>() {
-            @Override
-            public void done(List<Post> objects, ParseException e) {
-                if(e != null) {
-                    Log.e(TAG, "Error querying posts", e);
-                    return;
-                }
-
-                for(Post p : objects) {
-                    Log.i(TAG, "Post: " + p.getDescription() + ", username: " + p.getUser().getUsername());
-                }
             }
         });
     }

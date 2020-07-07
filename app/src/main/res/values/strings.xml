@@ -5,7 +5,7 @@
     <string name="login_password">Password</string>
     <string name="login_button">Login</string>
 
-    <string name="menu_home">Home</string>
+    <string name="menu_feed">Feed</string>
     <string name="menu_compose">Compose</string>
     <string name="menu_profile">Profile</string>
 
