@@ -5,6 +5,10 @@
     <string name="login_password">Password</string>
     <string name="login_button">Login</string>
 
+    <string name="menu_home">Home</string>
+    <string name="menu_compose">Compose</string>
+    <string name="menu_profile">Profile</string>
+
     <string name="take_picture_button">Take Picture</string>
     <string name="picture_description">Add a description!</string>
     <string name="picture_submit_button">Submit</string>

@@ -1,8 +1,10 @@
 package com.lucasg234.parstagram.activites;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -12,9 +14,11 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.lucasg234.parstagram.R;
 import com.lucasg234.parstagram.databinding.ActivityMainBinding;
 import com.lucasg234.parstagram.models.Post;
@@ -60,6 +64,23 @@ public class MainActivity extends AppCompatActivity {
                 }
                 ParseUser currentUser = ParseUser.getCurrentUser();
                 savePost(description, currentUser, mPhotoFile);
+            }
+        });
+
+        mBinding.bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment fragment;
+                switch(item.getItemId()) {
+                    case R.id.menuCompose:
+                        break;
+                    case R.id.menuProfile:
+                        break;
+                    // Default to menuHome
+                    default:
+                        break;
+                }
+                return true;
             }
         });
 
