@@ -16,4 +16,6 @@
     <string name="empty_description">Description cannot be empty.</string>
     <string name="empty_image">Must add an image to post.</string>
     <string name="error_image_save">Error saving your image.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
