@@ -88,6 +88,7 @@ public class PostDialogFragment extends DialogFragment {
         if(mPost.getImage() != null) {
             Glide.with(getContext())
                     .load(mPost.getImage().getUrl())
+                    .override(100, 100)
                     .into(mBinding.detailsImage);
         }
     }
