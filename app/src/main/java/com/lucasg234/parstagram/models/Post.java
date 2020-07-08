@@ -10,6 +10,8 @@ public class Post extends ParseObject {
     public static final String KEY_DESCRIPTION = "description";
     public static final String KEY_IMAGE = "image";
     public static final String KEY_USER = "user";
+    public static final String KEY_CREATED_AT = "createdAt";
+    public static final int QUERY_LIMIT = 20;
 
     //TODO= implement constructor to clean code
 

@@ -77,7 +77,7 @@ public class FeedFragment extends Fragment {
         mAdapter = new FeedAdapter(getContext(), mPosts);
         mBinding.feedRecyclerView.setAdapter(mAdapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        layoutManager.setReverseLayout(true);
+        layoutManager.setReverseLayout(false);
         mBinding.feedRecyclerView.setLayoutManager(layoutManager);
 
         queryPosts();
@@ -86,6 +86,8 @@ public class FeedFragment extends Fragment {
 
     private void queryPosts() {
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
+        query.addDescendingOrder(Post.KEY_CREATED_AT);
+        query.setLimit(Post.QUERY_LIMIT);
         query.include(Post.KEY_USER);
         query.findInBackground(new FindCallback<Post>() {
             @Override

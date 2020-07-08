@@ -1,5 +1,7 @@
 package com.lucasg234.parstagram.fragments;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,7 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.lucasg234.parstagram.R;
+import com.lucasg234.parstagram.activites.LoginActivity;
 import com.lucasg234.parstagram.databinding.FragmentProfileBinding;
+import com.parse.ParseUser;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -57,5 +61,16 @@ public class ProfileFragment extends Fragment {
 
         // Ensure mBinding is referring to the correct view
         mBinding = FragmentProfileBinding.bind(view);
+
+        mBinding.logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ParseUser.logOut();
+                Activity currentParent = getActivity();
+                Intent loginIntent = new Intent(currentParent, LoginActivity.class);
+                currentParent.startActivity(loginIntent);
+                currentParent.finish();
+            }
+        });
     }
 }
