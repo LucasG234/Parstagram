@@ -105,6 +105,8 @@ public class ComposeFragment extends Fragment {
                     return;
                 }
                 ParseUser currentUser = ParseUser.getCurrentUser();
+                // Enable indeterminate progress bar before we attempt to save the post
+                mBinding.progressBarCompose.setVisibility(View.VISIBLE);
                 savePost(description, currentUser, mPhotoFile);
             }
         });
@@ -155,6 +157,7 @@ public class ComposeFragment extends Fragment {
                             getString(R.string.error_image_save), Toast.LENGTH_SHORT).show();
                 }
                 Log.i(TAG, "Saved post successfully");
+                mBinding.progressBarCompose.setVisibility(View.INVISIBLE);
                 mBinding.editTextDescription.setText(null);
                 mBinding.imagePostPreview.setImageResource(0);
             }
