@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.lucasg234.parstagram.EndlessRecyclerViewScrollListener;
 import com.lucasg234.parstagram.FeedAdapter;
 import com.lucasg234.parstagram.R;
 import com.lucasg234.parstagram.databinding.FragmentFeedBinding;
@@ -42,6 +43,7 @@ public class FeedFragment extends Fragment {
     private FragmentFeedBinding mBinding;
     private List<Post> mPosts;
     private FeedAdapter mAdapter;
+    private EndlessRecyclerViewScrollListener mEndlessScrollListener;
 
     public FeedFragment() {
         // Required empty public constructor
@@ -76,12 +78,14 @@ public class FeedFragment extends Fragment {
         // Ensure mBinding is referring to the correct view
         mBinding = FragmentFeedBinding.bind(view);
 
+        // Listener for PostDialogFragment
         FeedAdapter.PostClickListener postClickListener = new FeedAdapter.PostClickListener() {
             @Override
             public void onPostClicked(int position) {
                 createDialogFragment(position);
             }
         };
+
         mPosts = new ArrayList<>();
         mAdapter = new FeedAdapter(getContext(), mPosts, postClickListener);
         mBinding.feedRecyclerView.setAdapter(mAdapter);
@@ -89,12 +93,21 @@ public class FeedFragment extends Fragment {
         layoutManager.setReverseLayout(false);
         mBinding.feedRecyclerView.setLayoutManager(layoutManager);
 
+        // Listener for Swipe to Refresh
         mBinding.feedSwipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 queryPosts();
             }
         });
+        // Listener for Endless Pagination
+        mEndlessScrollListener = new EndlessRecyclerViewScrollListener(layoutManager) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                queryAdditionalPosts();
+            }
+        };
+        mBinding.feedRecyclerView.addOnScrollListener(mEndlessScrollListener);
 
         queryPosts();
     }
@@ -114,9 +127,30 @@ public class FeedFragment extends Fragment {
                 }
                 // Clear all posts, then add the newly found set
                 mAdapter.clear();
+                mEndlessScrollListener.resetState();
                 mAdapter.addAll(posts);
                 // Signal refresh has stopped (no effect if not refreshing)
                 mBinding.feedSwipeContainer.setRefreshing(false);
+            }
+        });
+    }
+
+    private void queryAdditionalPosts() {
+        Log.i(TAG, "Loading more posts from endless scroll");
+        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
+        query.addDescendingOrder(Post.KEY_CREATED_AT);
+        query.setLimit(Post.QUERY_LIMIT);
+        query.include(Post.KEY_USER);
+        query.whereLessThan(Post.KEY_CREATED_AT, mPosts.get(mPosts.size()-1).getCreatedAt());
+        query.findInBackground(new FindCallback<Post>() {
+            @Override
+            public void done(List<Post> posts, ParseException e) {
+                if(e != null) {
+                    Log.e(TAG, "Error querying for additional posts", e);
+                    return;
+                }
+                // Do not clear all posts, only add new posts to the end of the list
+                mAdapter.addAll(posts);
             }
         });
     }
