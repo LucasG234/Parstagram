@@ -5,6 +5,7 @@
     <string name="login_password">Password</string>
     <string name="login_button">Login</string>
     <string name="logout_button">Logout</string>
+    <string name="register_button">Register new account</string>
 
     <string name="menu_feed">Feed</string>
     <string name="menu_compose">Compose</string>

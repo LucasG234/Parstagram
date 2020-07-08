@@ -12,6 +12,7 @@ import com.lucasg234.parstagram.databinding.ActivityLoginBinding;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
+import com.parse.SignUpCallback;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -39,6 +40,15 @@ public class LoginActivity extends AppCompatActivity {
                 loginUser(username, password);
             }
         });
+
+        mBinding.registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String username = mBinding.loginUsername.getText().toString();
+                String password = mBinding.loginPassword.getText().toString();
+                registerUser(username, password);
+            }
+        });
     }
 
     private void loginUser(String username, String password) {
@@ -50,6 +60,25 @@ public class LoginActivity extends AppCompatActivity {
                     Log.e(TAG, "Error logging in", e);
                     Toast.makeText(LoginActivity.this,
                             "Error with login. Please check username/password and try again.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                startMainActivity();
+            }
+        });
+    }
+
+    private void registerUser(String username, String password) {
+        Log.i(TAG, "Attempting to register user: " + username);
+        ParseUser newUser = new ParseUser();
+        newUser.setUsername(username);
+        newUser.setPassword(password);
+        newUser.signUpInBackground(new SignUpCallback() {
+            @Override
+            public void done(ParseException e) {
+                if(e != null) {
+                    Log.e(TAG, "Error registering user", e);
+                    Toast.makeText(LoginActivity.this,
+                            "Error with registration. This username may already be taken.", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 startMainActivity();
