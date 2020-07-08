@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -14,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.lucasg234.parstagram.FeedAdapter;
 import com.lucasg234.parstagram.R;
@@ -74,8 +76,14 @@ public class FeedFragment extends Fragment {
         // Ensure mBinding is referring to the correct view
         mBinding = FragmentFeedBinding.bind(view);
 
+        FeedAdapter.PostClickListener postClickListener = new FeedAdapter.PostClickListener() {
+            @Override
+            public void onPostClicked(int position) {
+                createDialogFragment(position);
+            }
+        };
         mPosts = new ArrayList<>();
-        mAdapter = new FeedAdapter(getContext(), mPosts);
+        mAdapter = new FeedAdapter(getContext(), mPosts, postClickListener);
         mBinding.feedRecyclerView.setAdapter(mAdapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setReverseLayout(false);
@@ -113,4 +121,9 @@ public class FeedFragment extends Fragment {
         });
     }
 
+    private void createDialogFragment(int position) {
+        final FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        PostDialogFragment dialogFragment = PostDialogFragment.newInstance(mPosts.get(position));
+        dialogFragment.show(fragmentManager, "fragment_post_dialog");
+    }
 }

@@ -16,14 +16,20 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder>{
+public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder> {
 
     private Context mContext;
     private List<Post> mPosts;
+    private PostClickListener mClickListener;
 
-    public FeedAdapter(Context context, List<Post> posts) {
+    public interface PostClickListener {
+        void onPostClicked(int position);
+    }
+
+    public FeedAdapter(Context context, List<Post> posts, PostClickListener clickListener) {
         this.mContext = context;
         this.mPosts = posts;
+        this.mClickListener = clickListener;
     }
 
     @NonNull
@@ -66,6 +72,12 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
         }
 
         public void bind(Post post) {
+            mBinding.getRoot().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mClickListener.onPostClicked(getAdapterPosition());
+                }
+            });
             mBinding.postDescription.setText(post.getDescription());
             mBinding.postUsername.setText(post.getUser().getUsername());
             if(post.getImage() != null) {
