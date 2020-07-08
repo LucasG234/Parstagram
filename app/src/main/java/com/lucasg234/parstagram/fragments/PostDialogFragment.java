@@ -1,5 +1,6 @@
 package com.lucasg234.parstagram.fragments;
 
+import android.graphics.Rect;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
 import com.lucasg234.parstagram.R;
 import com.lucasg234.parstagram.databinding.FragmentPostDialogBinding;
 import com.lucasg234.parstagram.models.Post;
@@ -47,6 +49,8 @@ public class PostDialogFragment extends DialogFragment {
         Bundle args = new Bundle();
         args.putParcelable(KEY_POST_ARG, Parcels.wrap(post));
         fragment.setArguments(args);
+
+
         return fragment;
     }
 
@@ -61,9 +65,10 @@ public class PostDialogFragment extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Workaround for https://issuetracker.google.com/issues/37042151
-        LayoutInflater parentInflater = getActivity().getLayoutInflater();
-        mBinding = FragmentPostDialogBinding.inflate(parentInflater, container, false);
+//        // Workaround for https://issuetracker.google.com/issues/37042151
+//        LayoutInflater parentInflater = getActivity().getLayoutInflater();
+        mBinding = FragmentPostDialogBinding.inflate(inflater, container, false);
+
         return mBinding.getRoot();
     }
 
@@ -72,6 +77,18 @@ public class PostDialogFragment extends DialogFragment {
         super.onViewCreated(view, savedInstanceState);
 
         // Ensure mBinding is referring to the correct view
-        mBinding = FragmentPostDialogBinding.bind(view);
+        //mBi
+        // nding = FragmentPostDialogBinding.bind(view);
+
+
+
+        mBinding.detailsDescription.setText(mPost.getDescription());
+        mBinding.detailsUsername.setText(mPost.getUser().getUsername());
+        mBinding.detailsCreatedAt.setText(mPost.getCreatedAt().toString());
+        if(mPost.getImage() != null) {
+            Glide.with(getContext())
+                    .load(mPost.getImage().getUrl())
+                    .into(mBinding.detailsImage);
+        }
     }
 }
