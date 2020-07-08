@@ -16,6 +16,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/postCreatedAt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        tools:text="10 minutes ago"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/postUsername"
+        app:layout_constraintBottom_toBottomOf="@id/postUsername"/>
+
+
     <ImageView
         android:id="@+id/postImage"
         android:layout_width="match_parent"

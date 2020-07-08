@@ -26,7 +26,8 @@
         android:layout_margin="8dp"
         tools:text="2020-07-08T17:51:06.405Z"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/detailsUsername"
+        app:layout_constraintBottom_toBottomOf="@id/detailsUsername" />
 
     <ImageView
         android:id="@+id/detailsImage"
@@ -36,7 +37,7 @@
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailsUsername"
+        app:layout_constraintTop_toBottomOf="@id/detailsUsername"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView

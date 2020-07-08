@@ -1,6 +1,7 @@
 package com.lucasg234.parstagram;
 
 import android.content.Context;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import com.lucasg234.parstagram.models.Post;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Date;
 import java.util.List;
 
 public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder> {
@@ -78,8 +80,16 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
                     mClickListener.onPostClicked(getAdapterPosition());
                 }
             });
+
             mBinding.postDescription.setText(post.getDescription());
             mBinding.postUsername.setText(post.getUser().getUsername());
+
+            // Use relative time for post
+            Date absoluteCreatedAt = post.getCreatedAt();
+            String relativeCreatedAt = String.valueOf(DateUtils.getRelativeTimeSpanString(absoluteCreatedAt.getTime(),
+                    System.currentTimeMillis(), 0L, DateUtils.FORMAT_ABBREV_TIME));
+            mBinding.postCreatedAt.setText(relativeCreatedAt);
+
             if(post.getImage() != null) {
                 Glide.with(mContext)
                         .load(post.getImage().getUrl())

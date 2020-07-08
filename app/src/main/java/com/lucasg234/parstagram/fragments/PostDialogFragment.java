@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import com.lucasg234.parstagram.models.Post;
 
 import org.parceler.Parcels;
 
+import java.util.Date;
 import java.util.zip.Inflater;
 
 /**
@@ -77,14 +79,17 @@ public class PostDialogFragment extends DialogFragment {
         super.onViewCreated(view, savedInstanceState);
 
         // Ensure mBinding is referring to the correct view
-        //mBi
-        // nding = FragmentPostDialogBinding.bind(view);
-
-
+        //mBinding = FragmentPostDialogBinding.bind(view);
 
         mBinding.detailsDescription.setText(mPost.getDescription());
         mBinding.detailsUsername.setText(mPost.getUser().getUsername());
-        mBinding.detailsCreatedAt.setText(mPost.getCreatedAt().toString());
+
+        // Use relative time for post
+        Date absoluteCreatedAt = mPost.getCreatedAt();
+        String relativeCreatedAt = String.valueOf(DateUtils.getRelativeTimeSpanString(absoluteCreatedAt.getTime(),
+                System.currentTimeMillis(), 0L, DateUtils.FORMAT_ABBREV_TIME));
+
+        mBinding.detailsCreatedAt.setText(relativeCreatedAt);
         if(mPost.getImage() != null) {
             Glide.with(getContext())
                     .load(mPost.getImage().getUrl())
