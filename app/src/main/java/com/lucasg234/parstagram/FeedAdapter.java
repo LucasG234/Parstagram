@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.lucasg234.parstagram.databinding.FragmentFeedBinding;
 import com.lucasg234.parstagram.databinding.ItemPostBinding;
 import com.lucasg234.parstagram.models.Post;
 
@@ -43,6 +42,18 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
     @Override
     public int getItemCount() {
         return mPosts.size();
+    }
+
+    // Clean all elements of the RecyclerView
+    public void clear() {
+        mPosts.clear();
+        notifyDataSetChanged();
+    }
+
+    // Add a list of Posts to the RecyclerView
+    public void addAll(List<Post> list) {
+        mPosts.addAll(list);
+        notifyDataSetChanged();
     }
 
     class FeedViewHolder extends RecyclerView.ViewHolder {

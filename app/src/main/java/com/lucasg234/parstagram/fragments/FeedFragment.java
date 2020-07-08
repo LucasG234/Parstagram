@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -80,6 +81,13 @@ public class FeedFragment extends Fragment {
         layoutManager.setReverseLayout(false);
         mBinding.feedRecyclerView.setLayoutManager(layoutManager);
 
+        mBinding.feedSwipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                queryPosts();
+            }
+        });
+
         queryPosts();
     }
 
@@ -96,8 +104,11 @@ public class FeedFragment extends Fragment {
                     Log.e(TAG, "Error querying posts", e);
                     return;
                 }
-                mPosts.addAll(posts);
-                mAdapter.notifyDataSetChanged();
+                // Clear all posts, then add the newly found set
+                mAdapter.clear();
+                mAdapter.addAll(posts);
+                // Signal refresh has stopped (no effect if not refreshing)
+                mBinding.feedSwipeContainer.setRefreshing(false);
             }
         });
     }
