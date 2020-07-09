@@ -25,6 +25,7 @@ import com.lucasg234.parstagram.models.Post;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.parse.ParseRelation;
 
 import org.jetbrains.annotations.NotNull;
 

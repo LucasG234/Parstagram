@@ -74,12 +74,6 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
         }
 
         public void bind(Post post) {
-            mBinding.getRoot().setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    mClickListener.onPostClicked(getAdapterPosition());
-                }
-            });
 
             mBinding.postDescription.setText(post.getDescription());
             mBinding.postUsername.setText(post.getUser().getUsername());
@@ -94,6 +88,13 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
                 Glide.with(mContext)
                         .load(post.getImage().getUrl())
                         .into(mBinding.postImage);
+
+                mBinding.postImage.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        mClickListener.onPostClicked(getAdapterPosition());
+                    }
+                });
             }
         }
     }

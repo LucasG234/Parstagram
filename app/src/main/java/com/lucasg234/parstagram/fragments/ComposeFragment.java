@@ -147,7 +147,6 @@ public class ComposeFragment extends Fragment {
         Post post = new Post();
         post.setDescription(description);
         post.setImage(new ParseFile(photoFile));
-        post.setUser(currentUser);
         post.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
@@ -155,6 +154,8 @@ public class ComposeFragment extends Fragment {
                     Log.e(TAG, "Error while saving post", e);
                     Toast.makeText(getContext(),
                             getString(R.string.error_image_save), Toast.LENGTH_SHORT).show();
+                    mBinding.progressBarCompose.setVisibility(View.INVISIBLE);
+                    return;
                 }
                 Log.i(TAG, "Saved post successfully");
                 mBinding.progressBarCompose.setVisibility(View.INVISIBLE);
