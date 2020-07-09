@@ -48,7 +48,7 @@
         tools:text="Here is a quite long example sample text which will help me with debugging this view :))))" />
 
     <ImageView
-        android:id="@+id/postLike"
+        android:id="@+id/postLikeButton"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_margin="8dp"
@@ -58,27 +58,27 @@
         app:srcCompat="@drawable/ufi_heart" />
 
     <ImageView
-        android:id="@+id/postComment"
+        android:id="@+id/postCommentButton"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_margin="8dp"
-        app:layout_constraintStart_toEndOf="@+id/postLike"
+        app:layout_constraintStart_toEndOf="@+id/postLikeButton"
         app:layout_constraintTop_toBottomOf="@+id/postDescription"
         android:tint="@color/colorInteractIcons"
         app:srcCompat="@drawable/ufi_comment" />
 
     <ImageView
-        android:id="@+id/postForward"
+        android:id="@+id/postForwardButton"
         android:layout_width="38dp"
         android:layout_height="38dp"
         android:layout_margin="8dp"
-        app:layout_constraintStart_toEndOf="@+id/postComment"
+        app:layout_constraintStart_toEndOf="@+id/postCommentButton"
         app:layout_constraintTop_toBottomOf="@+id/postDescription"
         android:tint="@color/colorInteractIcons"
         app:srcCompat="@drawable/ufi_new_direct" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/postSaveButton"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_margin="8dp"
