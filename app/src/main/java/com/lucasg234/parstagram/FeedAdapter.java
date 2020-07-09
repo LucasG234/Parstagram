@@ -12,10 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.lucasg234.parstagram.databinding.ItemPostBinding;
+import com.lucasg234.parstagram.fragments.FeedFragment;
 import com.lucasg234.parstagram.models.Post;
 import com.parse.CountCallback;
 import com.parse.ParseException;
-import com.parse.ParseRelation;
 import com.parse.ParseUser;
 
 import org.jetbrains.annotations.NotNull;
@@ -29,16 +29,17 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
 
     private Context mContext;
     private List<Post> mPosts;
-    private PostClickListener mClickListener;
+    private PostClickListener mPostClickListener;
 
     public interface PostClickListener {
-        void onPostClicked(int position);
+        void onPostClicked(int position, int dialogType);
     }
 
-    public FeedAdapter(Context context, List<Post> posts, PostClickListener clickListener) {
+
+    public FeedAdapter(Context context, List<Post> posts, PostClickListener postClickListener) {
         this.mContext = context;
         this.mPosts = posts;
-        this.mClickListener = clickListener;
+        this.mPostClickListener = postClickListener;
     }
 
     @NonNull
@@ -101,10 +102,22 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
                 mBinding.postImage.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        mClickListener.onPostClicked(getAdapterPosition());
+                        mPostClickListener.onPostClicked(getAdapterPosition(), FeedFragment.DIALOG_TYPE_POST);
                     }
                 });
             }
+
+            configureInteractionButtons(post);
+        }
+
+        private void configureInteractionButtons(final Post post) {
+            // Set listener on the comment button
+            mBinding.postCommentButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mPostClickListener.onPostClicked(getAdapterPosition(), FeedFragment.DIALOG_TYPE_COMMENT);
+                }
+            });
 
             // Determine if the post is already liked before setting initial image on like button
             post.isLikedBy(ParseUser.getCurrentUser(), new CountCallback() {

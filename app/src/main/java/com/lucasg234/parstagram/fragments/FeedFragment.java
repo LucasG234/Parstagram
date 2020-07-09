@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,18 +15,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.lucasg234.parstagram.EndlessRecyclerViewScrollListener;
 import com.lucasg234.parstagram.FeedAdapter;
-import com.lucasg234.parstagram.R;
 import com.lucasg234.parstagram.databinding.FragmentFeedBinding;
 import com.lucasg234.parstagram.models.Post;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
-import com.parse.ParseRelation;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -40,6 +37,9 @@ import java.util.List;
 public class FeedFragment extends Fragment {
 
     private static final String TAG = "FeedFragment";
+    // Used to determine what type of dialog fragment to create
+    public static final int DIALOG_TYPE_POST = 82;
+    public static final int DIALOG_TYPE_COMMENT = 83;
 
     private FragmentFeedBinding mBinding;
     private List<Post> mPosts;
@@ -79,13 +79,14 @@ public class FeedFragment extends Fragment {
         // Ensure mBinding is referring to the correct view
         mBinding = FragmentFeedBinding.bind(view);
 
-        // Listener for PostDialogFragment
+        // Listener to create Dialog Fragments
         FeedAdapter.PostClickListener postClickListener = new FeedAdapter.PostClickListener() {
             @Override
-            public void onPostClicked(int position) {
-                createDialogFragment(position);
+            public void onPostClicked(int position, int dialogType) {
+                createDialogFragment(position, dialogType);
             }
         };
+
 
         mPosts = new ArrayList<>();
         mAdapter = new FeedAdapter(getContext(), mPosts, postClickListener);
@@ -156,9 +157,20 @@ public class FeedFragment extends Fragment {
         });
     }
 
-    private void createDialogFragment(int position) {
+    private void createDialogFragment(int position, int dialogFragmentType) {
         final FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        PostDialogFragment dialogFragment = PostDialogFragment.newInstance(mPosts.get(position));
+        DialogFragment dialogFragment;
+        switch(dialogFragmentType) {
+            case DIALOG_TYPE_COMMENT:
+                dialogFragment = CommentFragmentDialog.newInstance(mPosts.get(position));
+                break;
+            case DIALOG_TYPE_POST:
+                dialogFragment = PostDialogFragment.newInstance(mPosts.get(position));
+                break;
+            default:
+                Log.e(TAG, "Attempted to show invalid fragment type");
+                return;
+        }
         dialogFragment.show(fragmentManager, "fragment_post_dialog");
     }
 }
