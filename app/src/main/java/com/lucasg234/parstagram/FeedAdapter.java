@@ -97,6 +97,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
             if(post.getImage() != null) {
                 Glide.with(mContext)
                         .load(post.getImage().getUrl())
+                        .placeholder(R.drawable.placeholder_image)
                         .into(mBinding.postImage);
 
                 mBinding.postImage.setOnClickListener(new View.OnClickListener() {
@@ -105,6 +106,11 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
                         mPostClickListener.onPostClicked(getAdapterPosition(), FeedFragment.DIALOG_TYPE_POST);
                     }
                 });
+            }
+            else {
+                Glide.with(mContext)
+                        .load(R.drawable.placeholder_image)
+                        .into(mBinding.postImage);
             }
 
             configureInteractionButtons(post);
