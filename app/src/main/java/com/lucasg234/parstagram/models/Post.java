@@ -19,6 +19,7 @@ public class Post extends ParseObject {
     public static final String KEY_USER = "user";
     public static final String KEY_CREATED_AT = "createdAt";
     public static final String KEY_LIKED_BY = "likedBy";
+    public static final String KEY_COMMENTS = "comments";
     public static final String KEY_OBJECT_ID = "objectId";
     public static final int QUERY_LIMIT = 20;
 
@@ -68,5 +69,10 @@ public class Post extends ParseObject {
     public void removeLike(ParseUser user) {
         ParseRelation<ParseUser> likedBy = getRelation(KEY_LIKED_BY);
         likedBy.remove(user);
+    }
+
+    public void addComment(Comment comment) {
+        ParseRelation<Comment> comments = getRelation(KEY_COMMENTS);
+        comments.add(comment);
     }
 }

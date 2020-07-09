@@ -13,11 +13,11 @@
 
     <string name="take_picture_button">Take Picture</string>
     <string name="picture_description">Add a description!</string>
-    <string name="picture_submit_button">Submit</string>
+    <string name="post_button">Post</string>
+    <string name="compose_comment_hint">Add a comment here!</string>
 
     <string name="empty_description">Description cannot be empty.</string>
     <string name="empty_image">Must add an image to post.</string>
     <string name="error_image_save">Error saving your image.</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="error_comment_save">Error saving your comment.</string>
 </resources>
