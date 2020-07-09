@@ -1,6 +1,8 @@
 package com.lucasg234.parstagram.models;
 
 import com.parse.CountCallback;
+import com.parse.FindCallback;
+import com.parse.Parse;
 import com.parse.ParseClassName;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
@@ -40,13 +42,21 @@ public class Post extends ParseObject {
         return getParseUser(KEY_USER);
     }
 
+
     // Counts how many times a user occurs in the likedBy list
     // CountCallback will return either 0 or 1
+    //TODO: change?
     public void isLikedBy(ParseUser user, CountCallback callback) {
         ParseRelation<ParseUser> likedBy = getRelation(KEY_LIKED_BY);
         ParseQuery query = likedBy.getQuery();
         query.whereEqualTo(KEY_OBJECT_ID, user.getObjectId());
         query.countInBackground(callback);
+    }
+
+    // Returns ParseQuery used to find comments associated with the post
+    public ParseQuery getCommentQuery() {
+        ParseRelation<Comment> comments = getRelation(KEY_COMMENTS);
+        return comments.getQuery();
     }
 
     public void setDescription(String description) {
@@ -75,4 +85,5 @@ public class Post extends ParseObject {
         ParseRelation<Comment> comments = getRelation(KEY_COMMENTS);
         comments.add(comment);
     }
+
 }

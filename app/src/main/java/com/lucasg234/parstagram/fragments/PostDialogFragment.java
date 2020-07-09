@@ -7,20 +7,31 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
+import com.lucasg234.parstagram.FeedAdapter;
+import com.lucasg234.parstagram.PostDialogAdapter;
 import com.lucasg234.parstagram.R;
+import com.lucasg234.parstagram.activites.MainActivity;
 import com.lucasg234.parstagram.databinding.FragmentPostDialogBinding;
+import com.lucasg234.parstagram.models.Comment;
 import com.lucasg234.parstagram.models.Post;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
 
 import org.parceler.Parcels;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.zip.Inflater;
 
 /**
@@ -31,9 +42,12 @@ import java.util.zip.Inflater;
 public class PostDialogFragment extends DialogFragment {
 
     private static String KEY_POST_ARG = "post_arg_1";
+    private static final String TAG = "PostDialogFragment";
 
     private Post mPost;
     private FragmentPostDialogBinding mBinding;
+    private List<Comment> mComments;
+    private PostDialogAdapter mAdapter;
 
     public PostDialogFragment() {
         // Required empty public constructor
@@ -84,16 +98,18 @@ public class PostDialogFragment extends DialogFragment {
         mBinding.detailsDescription.setText(mPost.getDescription());
         mBinding.detailsUsername.setText(mPost.getUser().getUsername());
 
-        // Use relative time for post
-        Date absoluteCreatedAt = mPost.getCreatedAt();
-        String relativeCreatedAt = String.valueOf(DateUtils.getRelativeTimeSpanString(absoluteCreatedAt.getTime(),
-                System.currentTimeMillis(), 0L, DateUtils.FORMAT_ABBREV_TIME));
+        mComments = new ArrayList<>();
+        mAdapter = new PostDialogAdapter(getContext(), mComments);
+        mBinding.detailsRecyclerView.setAdapter(mAdapter);
+        mBinding.detailsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        mBinding.detailsCreatedAt.setText(relativeCreatedAt);
+        // Use relative time for post created at description
+        Date createdAt = mPost.getCreatedAt();
+        mBinding.detailsCreatedAt.setText(MainActivity.dateToRelative(createdAt));
+
         if(mPost.getImage() != null) {
             Glide.with(getContext())
                     .load(mPost.getImage().getUrl())
-                    .override(100, 100)
                     .placeholder(R.drawable.placeholder_image)
                     .into(mBinding.detailsImage);
         }
@@ -102,5 +118,26 @@ public class PostDialogFragment extends DialogFragment {
                     .load(R.drawable.placeholder_image)
                     .into(mBinding.detailsImage);
         }
+
+        queryComments();
+    }
+
+    private void queryComments() {
+        ParseQuery query = mPost.getCommentQuery();
+        query.addDescendingOrder(Comment.KEY_CREATED_AT);
+        query.setLimit(Comment.QUERY_LIMIT);
+        query.include(Comment.KEY_USER);
+        query.findInBackground(new FindCallback<Comment>() {
+            @Override
+            public void done(List<Comment> comments, ParseException e) {
+                if(e != null) {
+                    Log.e(TAG, "Error querying comments", e);
+                    return;
+                }
+                // Clear all posts, then add the newly found set
+                mComments.addAll(comments);
+                mAdapter.notifyDataSetChanged();
+            }
+        });
     }
 }

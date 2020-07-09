@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
+import android.text.format.DateUtils;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -14,6 +15,8 @@ import com.lucasg234.parstagram.databinding.ActivityMainBinding;
 import com.lucasg234.parstagram.fragments.ComposeFragment;
 import com.lucasg234.parstagram.fragments.FeedFragment;
 import com.lucasg234.parstagram.fragments.ProfileFragment;
+
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -56,5 +59,11 @@ public class MainActivity extends AppCompatActivity {
 
         // Set a default fragment
         mBinding.bottomNavigationView.setSelectedItemId(R.id.menuFeed);
+    }
+
+    // Static method stored here for use through Activity
+    public static String dateToRelative(Date date) {
+        return String.valueOf(DateUtils.getRelativeTimeSpanString(date.getTime(),
+                System.currentTimeMillis(), 0L, DateUtils.FORMAT_ABBREV_TIME));
     }
 }

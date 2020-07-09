@@ -92,7 +92,6 @@ public class FeedFragment extends Fragment {
         mAdapter = new FeedAdapter(getContext(), mPosts, postClickListener);
         mBinding.feedRecyclerView.setAdapter(mAdapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        layoutManager.setReverseLayout(false);
         mBinding.feedRecyclerView.setLayoutManager(layoutManager);
 
         // Listener for Swipe to Refresh

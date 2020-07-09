@@ -1,7 +1,6 @@
 package com.lucasg234.parstagram;
 
 import android.content.Context;
-import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.lucasg234.parstagram.activites.MainActivity;
 import com.lucasg234.parstagram.databinding.ItemPostBinding;
 import com.lucasg234.parstagram.fragments.FeedFragment;
 import com.lucasg234.parstagram.models.Post;
@@ -88,10 +88,8 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
             mBinding.postUsername.setText(post.getUser().getUsername());
 
             // Use relative time for post created at description
-            Date absoluteCreatedAt = post.getCreatedAt();
-            String relativeCreatedAt = String.valueOf(DateUtils.getRelativeTimeSpanString(absoluteCreatedAt.getTime(),
-                    System.currentTimeMillis(), 0L, DateUtils.FORMAT_ABBREV_TIME));
-            mBinding.postCreatedAt.setText(relativeCreatedAt);
+            Date createdAt = post.getCreatedAt();
+            mBinding.postCreatedAt.setText(MainActivity.dateToRelative(createdAt));
 
             // Set image on the post
             if(post.getImage() != null) {

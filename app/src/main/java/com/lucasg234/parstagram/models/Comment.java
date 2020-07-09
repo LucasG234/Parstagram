@@ -15,6 +15,7 @@ public class Comment extends ParseObject {
     public static final String KEY_USER = "user";
     public static final String KEY_CREATED_AT = "createdAt";
     public static final String KEY_PARENT_POST = "parentPost";
+    public static final int QUERY_LIMIT = 20;
 
 
     // Empty constructor required to use Parceler
