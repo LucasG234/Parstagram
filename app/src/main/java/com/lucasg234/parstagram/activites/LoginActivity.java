@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.lucasg234.parstagram.R;
 import com.lucasg234.parstagram.databinding.ActivityLoginBinding;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
@@ -59,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
                 if(e != null) {
                     Log.e(TAG, "Error logging in", e);
                     Toast.makeText(LoginActivity.this,
-                            "Error with login. Please check username/password and try again.", Toast.LENGTH_SHORT).show();
+                            getString(R.string.error_login), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 startMainActivity();
@@ -78,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
                 if(e != null) {
                     Log.e(TAG, "Error registering user", e);
                     Toast.makeText(LoginActivity.this,
-                            "Error with registration. This username may already be taken.", Toast.LENGTH_SHORT).show();
+                            getString(R.string.error_registration), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 startMainActivity();

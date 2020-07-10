@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.lucasg234.parstagram.FeedAdapter;
@@ -134,6 +135,7 @@ public class PostDialogFragment extends DialogFragment {
             public void done(List<Comment> comments, ParseException e) {
                 if(e != null) {
                     Log.e(TAG, "Error querying comments", e);
+                    Toast.makeText(getContext(), getString(R.string.error_load), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 // Clear all posts, then add the newly found set

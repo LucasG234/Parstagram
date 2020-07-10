@@ -127,11 +127,8 @@ public class ComposeFragment extends Fragment {
         if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
                 // by this point we have the camera photo on disk
-                Bitmap takenImage;
-                if(rotateBitmapOrientation(mPhotoFile.getAbsolutePath()) != null) {
-                    takenImage = rotateBitmapOrientation(mPhotoFile.getAbsolutePath());
-                }
-                else {
+                Bitmap takenImage = rotateBitmapOrientation(mPhotoFile.getAbsolutePath());
+                if(takenImage == null) {
                     takenImage = BitmapFactory.decodeFile(mPhotoFile.getAbsolutePath());
                 }
                 // RESIZE BITMAP, see section below
@@ -209,11 +206,12 @@ public class ComposeFragment extends Fragment {
         BitmapFactory.Options opts = new BitmapFactory.Options();
         Bitmap bm = BitmapFactory.decodeFile(photoFilePath, opts);
         // Read EXIF Data
-        ExifInterface exif = null;
+        ExifInterface exif;
         try {
             exif = new ExifInterface(photoFilePath);
         } catch (IOException e) {
             Log.e(TAG, "Error rotating image", e);
+            // Null to be handled in calling method
             return null;
         }
         String orientString = exif.getAttribute(ExifInterface.TAG_ORIENTATION);

@@ -15,9 +15,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.lucasg234.parstagram.EndlessRecyclerViewScrollListener;
 import com.lucasg234.parstagram.FeedAdapter;
+import com.lucasg234.parstagram.R;
 import com.lucasg234.parstagram.databinding.FragmentFeedBinding;
 import com.lucasg234.parstagram.models.Post;
 import com.parse.FindCallback;
@@ -132,6 +134,7 @@ public class FeedFragment extends Fragment {
             public void done(List<Post> posts, ParseException e) {
                 if(e != null) {
                     Log.e(TAG, "Error querying posts", e);
+                    Toast.makeText(getContext(), getString(R.string.error_load), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 // Clear all posts, then add the newly found set
@@ -159,6 +162,7 @@ public class FeedFragment extends Fragment {
             public void done(List<Post> posts, ParseException e) {
                 if(e != null) {
                     Log.e(TAG, "Error querying for additional posts", e);
+                    Toast.makeText(getContext(), getString(R.string.error_load), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 // Do not clear all posts, only add new posts to the end of the list
@@ -178,7 +182,6 @@ public class FeedFragment extends Fragment {
                 dialogFragment = PostDialogFragment.newInstance(mPosts.get(position));
                 break;
             default:
-                Log.e(TAG, "Attempted to show invalid fragment type");
                 return;
         }
         dialogFragment.show(fragmentManager, "fragment_post_dialog");
