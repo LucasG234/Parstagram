@@ -31,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
         mBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(mBinding.getRoot());
 
+        setSupportActionBar(mBinding.mainToolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
         final FragmentManager fragmentManager = getSupportFragmentManager();
 
         // Set a listener for fragment selection
@@ -43,12 +46,10 @@ public class MainActivity extends AppCompatActivity {
                         fragment = ComposeFragment.newInstance();
                         break;
                     case R.id.menuProfile:
-                        //TODO: change
                         fragment = ProfileFragment.newInstance();
                         break;
                     // Default to menuHome
                     default:
-                        //TODO: change
                         fragment = FeedFragment.newInstance();
                         break;
                 }

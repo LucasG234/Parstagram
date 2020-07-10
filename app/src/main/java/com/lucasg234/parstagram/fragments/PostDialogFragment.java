@@ -123,7 +123,7 @@ public class PostDialogFragment extends DialogFragment {
     }
 
     private void queryComments() {
-        ParseQuery query = mPost.getCommentQuery();
+        ParseQuery<Comment> query = mPost.getCommentQuery();
         query.addDescendingOrder(Comment.KEY_CREATED_AT);
         query.setLimit(Comment.QUERY_LIMIT);
         query.include(Comment.KEY_USER);
