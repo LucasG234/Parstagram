@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".activites.LoginActivity">
 
+    <ImageView
+        android:id="@+id/loginLogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/nav_logo_whiteout" />
+
     <EditText
         android:id="@+id/loginUsername"
         android:layout_width="match_parent"
@@ -16,7 +26,7 @@
         android:hint="@string/login_username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/loginLogo" />
 
     <EditText
         android:id="@+id/loginPassword"
@@ -38,6 +48,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:text="@string/login_button"
+        android:background="@color/colorButtonBlue"
+        android:textColor="@color/colorLightText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginPassword" />
@@ -48,6 +60,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:text="@string/register_button"
+        android:background="@color/colorButtonGreen"
+        android:textColor="@color/colorLightText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginButton" />

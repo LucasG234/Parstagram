@@ -3,5 +3,9 @@
     <color name="colorPrimary">#EEEEEE</color>
     <color name="colorPrimaryDark">#888888</color>
     <color name="colorAccent">#CECECE</color>
+
     <color name="colorInteractIcons">#000000</color>
+    <color name="colorButtonBlue">@android:color/holo_blue_light</color>
+    <color name="colorButtonGreen">@android:color/holo_green_light</color>
+    <color name="colorLightText">@android:color/white</color>
 </resources>
