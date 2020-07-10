@@ -1,4 +1,4 @@
-package com.lucasg234.parstagram.fragments;
+package com.lucasg234.parstagram.dialogs;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,7 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.lucasg234.parstagram.activites.LoginActivity;
+import com.lucasg234.parstagram.login.LoginActivity;
 import com.lucasg234.parstagram.databinding.FragmentSettingsDialogBinding;
 import com.parse.ParseUser;
 

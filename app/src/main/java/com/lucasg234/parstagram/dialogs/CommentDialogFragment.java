@@ -1,4 +1,4 @@
-package com.lucasg234.parstagram.fragments;
+package com.lucasg234.parstagram.dialogs;
 
 import android.os.Bundle;
 

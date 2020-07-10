@@ -1,4 +1,4 @@
-package com.lucasg234.parstagram;
+package com.lucasg234.parstagram.dialogs;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.lucasg234.parstagram.activites.MainActivity;
 import com.lucasg234.parstagram.databinding.ItemCommentBinding;
+import com.lucasg234.parstagram.mainactivity.MainActivity;
 import com.lucasg234.parstagram.models.Comment;
 
 import java.util.Date;

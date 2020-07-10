@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name=".ParseApplication"
+        android:name=".application.ParseApplication"
         android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -24,8 +24,8 @@
                 android:resource="@xml/fileprovider" />
         </provider>
 
-        <activity android:name=".activites.MainActivity"></activity>
-        <activity android:name=".activites.LoginActivity">
+        <activity android:name=".mainactivity.MainActivity"></activity>
+        <activity android:name=".login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

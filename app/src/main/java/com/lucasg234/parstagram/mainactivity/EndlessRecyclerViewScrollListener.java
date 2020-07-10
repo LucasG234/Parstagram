@@ -1,4 +1,4 @@
-package com.lucasg234.parstagram;
+package com.lucasg234.parstagram.mainactivity;
 
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;

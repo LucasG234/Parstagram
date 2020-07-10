@@ -1,4 +1,4 @@
-package com.lucasg234.parstagram;
+package com.lucasg234.parstagram.mainactivity;
 
 import android.content.Context;
 import android.util.Log;
@@ -11,9 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.lucasg234.parstagram.activites.MainActivity;
+import com.lucasg234.parstagram.R;
 import com.lucasg234.parstagram.databinding.ItemPostBinding;
-import com.lucasg234.parstagram.fragments.FeedFragment;
 import com.lucasg234.parstagram.models.Post;
 import com.parse.CountCallback;
 import com.parse.ParseException;

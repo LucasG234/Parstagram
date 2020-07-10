@@ -1,4 +1,4 @@
-package com.lucasg234.parstagram.activites;
+package com.lucasg234.parstagram.mainactivity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,19 +8,13 @@ import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
 import android.text.format.DateUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.lucasg234.parstagram.R;
 import com.lucasg234.parstagram.databinding.ActivityMainBinding;
-import com.lucasg234.parstagram.fragments.CommentDialogFragment;
-import com.lucasg234.parstagram.fragments.ComposeFragment;
-import com.lucasg234.parstagram.fragments.FeedFragment;
-import com.lucasg234.parstagram.fragments.PostDialogFragment;
-import com.lucasg234.parstagram.fragments.ProfileFragment;
-import com.lucasg234.parstagram.fragments.SettingsDialogFragment;
+import com.lucasg234.parstagram.dialogs.SettingsDialogFragment;
 
 import java.util.Date;
 

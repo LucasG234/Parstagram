@@ -1,6 +1,5 @@
-package com.lucasg234.parstagram.fragments;
+package com.lucasg234.parstagram.dialogs;
 
-import android.graphics.Rect;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,21 +8,16 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.lucasg234.parstagram.FeedAdapter;
-import com.lucasg234.parstagram.PostDialogAdapter;
 import com.lucasg234.parstagram.R;
-import com.lucasg234.parstagram.activites.MainActivity;
 import com.lucasg234.parstagram.databinding.FragmentPostDialogBinding;
+import com.lucasg234.parstagram.mainactivity.MainActivity;
 import com.lucasg234.parstagram.models.Comment;
 import com.lucasg234.parstagram.models.Post;
 import com.parse.FindCallback;
@@ -35,7 +29,6 @@ import org.parceler.Parcels;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.zip.Inflater;
 
 /**
  * A simple {@link Fragment} subclass.

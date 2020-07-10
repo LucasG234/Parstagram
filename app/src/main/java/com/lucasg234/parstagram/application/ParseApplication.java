@@ -1,7 +1,8 @@
-package com.lucasg234.parstagram;
+package com.lucasg234.parstagram.application;
 
 import android.app.Application;
 
+import com.lucasg234.parstagram.R;
 import com.lucasg234.parstagram.models.Comment;
 import com.lucasg234.parstagram.models.Post;
 import com.parse.Parse;

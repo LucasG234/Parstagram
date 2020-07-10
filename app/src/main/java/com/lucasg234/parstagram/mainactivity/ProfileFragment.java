@@ -1,15 +1,11 @@
-package com.lucasg234.parstagram.fragments;
+package com.lucasg234.parstagram.mainactivity;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.parse.ParseUser;
-
-import org.jetbrains.annotations.NotNull;
 
 // Class which acts similar to feed, but only shows current User's posts
 public class ProfileFragment extends FeedFragment {

@@ -1,4 +1,4 @@
-package com.lucasg234.parstagram.activites;
+package com.lucasg234.parstagram.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.lucasg234.parstagram.R;
 import com.lucasg234.parstagram.databinding.ActivityLoginBinding;
+import com.lucasg234.parstagram.mainactivity.MainActivity;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;

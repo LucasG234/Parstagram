@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    tools:context=".fragments.CommentDialogFragment">
+    tools:context=".dialogs.CommentDialogFragment">
 
     <EditText
         android:id="@+id/commentSubmitText"

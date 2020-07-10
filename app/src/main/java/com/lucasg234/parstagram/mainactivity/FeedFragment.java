@@ -1,4 +1,4 @@
-package com.lucasg234.parstagram.fragments;
+package com.lucasg234.parstagram.mainactivity;
 
 import android.os.Bundle;
 
@@ -17,8 +17,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.lucasg234.parstagram.EndlessRecyclerViewScrollListener;
-import com.lucasg234.parstagram.FeedAdapter;
+import com.lucasg234.parstagram.dialogs.CommentDialogFragment;
+import com.lucasg234.parstagram.dialogs.PostDialogFragment;
 import com.lucasg234.parstagram.R;
 import com.lucasg234.parstagram.databinding.FragmentFeedBinding;
 import com.lucasg234.parstagram.models.Post;

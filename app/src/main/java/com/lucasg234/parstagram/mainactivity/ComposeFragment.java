@@ -1,4 +1,4 @@
-package com.lucasg234.parstagram.fragments;
+package com.lucasg234.parstagram.mainactivity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -21,13 +21,10 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.lucasg234.parstagram.R;
-import com.lucasg234.parstagram.activites.MainActivity;
 import com.lucasg234.parstagram.databinding.FragmentComposeBinding;
 import com.lucasg234.parstagram.models.Post;
-import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
-import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
@@ -35,7 +32,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
 
