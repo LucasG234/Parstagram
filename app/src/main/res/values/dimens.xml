@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="standardMargin">16dp</dimen>
+    <dimen name="smallMargin">8dp</dimen>
+    <dimen name="matchConstraint">0dp</dimen>
+
+    <dimen name="standardImageSize">300dp</dimen>
+    <dimen name="standardIconSize">32dp</dimen>
+    <dimen name="largeIconSize">38dp</dimen>
+</resources>

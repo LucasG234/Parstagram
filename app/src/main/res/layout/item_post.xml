@@ -10,7 +10,7 @@
         android:id="@+id/postUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/smallMargin"
         tools:text="Lucas"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,7 +20,7 @@
         android:id="@+id/postCreatedAt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/smallMargin"
         tools:text="10 minutes ago"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/postUsername"
@@ -30,8 +30,8 @@
     <ImageView
         android:id="@+id/postImage"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_margin="8dp"
+        android:layout_height="@dimen/standardImageSize"
+        android:layout_margin="@dimen/smallMargin"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/postUsername"
@@ -39,9 +39,9 @@
 
     <ImageView
         android:id="@+id/postLikeButton"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_margin="8dp"
+        android:layout_width="@dimen/standardIconSize"
+        android:layout_height="@dimen/standardIconSize"
+        android:layout_margin="@dimen/smallMargin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/postImage"
         android:tint="@color/colorInteractIcons"
@@ -49,9 +49,9 @@
 
     <ImageView
         android:id="@+id/postCommentButton"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_margin="8dp"
+        android:layout_width="@dimen/standardIconSize"
+        android:layout_height="@dimen/standardIconSize"
+        android:layout_margin="@dimen/smallMargin"
         app:layout_constraintStart_toEndOf="@+id/postLikeButton"
         app:layout_constraintTop_toBottomOf="@+id/postImage"
         android:tint="@color/colorInteractIcons"
@@ -59,9 +59,9 @@
 
     <ImageView
         android:id="@+id/postForwardButton"
-        android:layout_width="38dp"
-        android:layout_height="38dp"
-        android:layout_margin="8dp"
+        android:layout_width="@dimen/standardIconSize"
+        android:layout_height="@dimen/standardIconSize"
+        android:layout_margin="@dimen/smallMargin"
         app:layout_constraintStart_toEndOf="@+id/postCommentButton"
         app:layout_constraintTop_toBottomOf="@+id/postImage"
         android:tint="@color/colorInteractIcons"
@@ -69,9 +69,9 @@
 
     <ImageView
         android:id="@+id/postSaveButton"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_margin="8dp"
+        android:layout_width="@dimen/standardIconSize"
+        android:layout_height="@dimen/standardIconSize"
+        android:layout_margin="@dimen/smallMargin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/postImage"
         android:tint="@color/colorInteractIcons"
@@ -79,9 +79,9 @@
 
     <TextView
         android:id="@+id/postDescription"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/matchConstraint"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/smallMargin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/postLikeButton"

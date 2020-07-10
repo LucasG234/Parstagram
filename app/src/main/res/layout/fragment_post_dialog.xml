@@ -19,7 +19,7 @@
                 android:id="@+id/detailsUsername"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_margin="@dimen/smallMargin"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 app:layout_constraintEnd_toStartOf="@+id/detailsCreatedAt"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -31,7 +31,7 @@
                 android:id="@+id/detailsCreatedAt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_margin="@dimen/smallMargin"
                 tools:text="2020-07-08T17:51:06.405Z"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/detailsUsername"
@@ -39,9 +39,9 @@
 
             <ImageView
                 android:id="@+id/detailsImage"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
-                android:layout_margin="8dp"
+                android:layout_width="@dimen/standardImageSize"
+                android:layout_height="@dimen/standardImageSize"
+                android:layout_margin="@dimen/smallMargin"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -50,9 +50,9 @@
 
             <TextView
                 android:id="@+id/detailsDescription"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/matchConstraint"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_margin="@dimen/smallMargin"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/detailsImage"
