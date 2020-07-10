@@ -15,6 +15,7 @@ import com.lucasg234.parstagram.databinding.ActivityMainBinding;
 import com.lucasg234.parstagram.fragments.ComposeFragment;
 import com.lucasg234.parstagram.fragments.FeedFragment;
 import com.lucasg234.parstagram.fragments.ProfileFragment;
+import com.lucasg234.parstagram.fragments.SettingsFragment;
 
 import java.util.Date;
 

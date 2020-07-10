@@ -78,7 +78,8 @@ public class CommentFragmentDialog extends DialogFragment {
         super.onViewCreated(view, savedInstanceState);
 
         // Ensure mBinding is referring to the correct view
-        //mBinding = FragmentPostDialogBinding.bind(view);
+        mBinding = FragmentCommentDialogBinding.bind(view);
+
         mBinding.commentSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

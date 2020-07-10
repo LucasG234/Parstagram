@@ -23,6 +23,7 @@ import com.lucasg234.parstagram.models.Post;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -41,10 +42,12 @@ public class FeedFragment extends Fragment {
     public static final int DIALOG_TYPE_POST = 82;
     public static final int DIALOG_TYPE_COMMENT = 83;
 
-    private FragmentFeedBinding mBinding;
+    protected FragmentFeedBinding mBinding;
     private List<Post> mPosts;
-    private FeedAdapter mAdapter;
+    protected FeedAdapter mAdapter;
     private EndlessRecyclerViewScrollListener mEndlessScrollListener;
+
+    private ParseUser mFilterUser;
 
     public FeedFragment() {
         // Required empty public constructor
@@ -76,8 +79,6 @@ public class FeedFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        // Ensure mBinding is referring to the correct view
-        mBinding = FragmentFeedBinding.bind(view);
 
         // Listener to create Dialog Fragments
         FeedAdapter.PostClickListener postClickListener = new FeedAdapter.PostClickListener() {
@@ -86,7 +87,6 @@ public class FeedFragment extends Fragment {
                 createDialogFragment(position, dialogType);
             }
         };
-
 
         mPosts = new ArrayList<>();
         mAdapter = new FeedAdapter(getContext(), mPosts, postClickListener);
@@ -113,12 +113,20 @@ public class FeedFragment extends Fragment {
         queryPosts();
     }
 
+    // This method sets a specific user to display posts from
+    public void setQueryFilterUser(ParseUser user) {
+        this.mFilterUser = user;
+    }
 
-    private void queryPosts() {
+
+    protected void queryPosts() {
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.addDescendingOrder(Post.KEY_CREATED_AT);
         query.setLimit(Post.QUERY_LIMIT);
         query.include(Post.KEY_USER);
+        if(mFilterUser != null) {
+            query.whereEqualTo(Post.KEY_USER, mFilterUser);
+        }
         query.findInBackground(new FindCallback<Post>() {
             @Override
             public void done(List<Post> posts, ParseException e) {
@@ -143,6 +151,9 @@ public class FeedFragment extends Fragment {
         query.setLimit(Post.QUERY_LIMIT);
         query.include(Post.KEY_USER);
         query.whereLessThan(Post.KEY_CREATED_AT, mPosts.get(mPosts.size()-1).getCreatedAt());
+        if(mFilterUser != null) {
+            query.whereEqualTo(Post.KEY_USER, mFilterUser);
+        }
         query.findInBackground(new FindCallback<Post>() {
             @Override
             public void done(List<Post> posts, ParseException e) {

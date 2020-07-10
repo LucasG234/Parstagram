@@ -37,23 +37,13 @@
         app:layout_constraintTop_toBottomOf="@+id/postUsername"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <TextView
-        android:id="@+id/postDescription"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/postImage"
-        tools:text="Here is a quite long example sample text which will help me with debugging this view :))))" />
-
     <ImageView
         android:id="@+id/postLikeButton"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_margin="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/postDescription"
+        app:layout_constraintTop_toBottomOf="@+id/postImage"
         android:tint="@color/colorInteractIcons"
         app:srcCompat="@drawable/ufi_heart" />
 
@@ -63,7 +53,7 @@
         android:layout_height="32dp"
         android:layout_margin="8dp"
         app:layout_constraintStart_toEndOf="@+id/postLikeButton"
-        app:layout_constraintTop_toBottomOf="@+id/postDescription"
+        app:layout_constraintTop_toBottomOf="@+id/postImage"
         android:tint="@color/colorInteractIcons"
         app:srcCompat="@drawable/ufi_comment" />
 
@@ -73,7 +63,7 @@
         android:layout_height="38dp"
         android:layout_margin="8dp"
         app:layout_constraintStart_toEndOf="@+id/postCommentButton"
-        app:layout_constraintTop_toBottomOf="@+id/postDescription"
+        app:layout_constraintTop_toBottomOf="@+id/postImage"
         android:tint="@color/colorInteractIcons"
         app:srcCompat="@drawable/ufi_new_direct" />
 
@@ -83,8 +73,19 @@
         android:layout_height="32dp"
         android:layout_margin="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/postDescription"
+        app:layout_constraintTop_toBottomOf="@id/postImage"
         android:tint="@color/colorInteractIcons"
         app:srcCompat="@drawable/ufi_save" />
+
+    <TextView
+        android:id="@+id/postDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/postLikeButton"
+        tools:text="Here is a quite long example sample text which will help me with debugging this view :))))" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

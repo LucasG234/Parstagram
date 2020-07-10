@@ -93,7 +93,7 @@ public class PostDialogFragment extends DialogFragment {
         super.onViewCreated(view, savedInstanceState);
 
         // Ensure mBinding is referring to the correct view
-        //mBinding = FragmentPostDialogBinding.bind(view);
+        mBinding = FragmentPostDialogBinding.bind(view);
 
         mBinding.detailsDescription.setText(mPost.getDescription());
         mBinding.detailsUsername.setText(mPost.getUser().getUsername());
