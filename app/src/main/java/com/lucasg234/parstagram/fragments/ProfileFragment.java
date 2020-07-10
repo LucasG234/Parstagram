@@ -7,14 +7,11 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
-import com.lucasg234.parstagram.databinding.FragmentFeedBinding;
 import com.parse.ParseUser;
 
 import org.jetbrains.annotations.NotNull;
 
 // Class which acts similar to feed, but only shows current User's posts
-// and provides access to the settings Fragment
 public class ProfileFragment extends FeedFragment {
 
     public static ProfileFragment newInstance() {

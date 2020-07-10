@@ -172,7 +172,7 @@ public class FeedFragment extends Fragment {
         DialogFragment dialogFragment;
         switch(dialogFragmentType) {
             case DIALOG_TYPE_COMMENT:
-                dialogFragment = CommentFragmentDialog.newInstance(mPosts.get(position));
+                dialogFragment = CommentDialogFragment.newInstance(mPosts.get(position));
                 break;
             case DIALOG_TYPE_POST:
                 dialogFragment = PostDialogFragment.newInstance(mPosts.get(position));

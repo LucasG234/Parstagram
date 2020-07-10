@@ -18,7 +18,6 @@ import com.lucasg234.parstagram.databinding.FragmentCommentDialogBinding;
 import com.lucasg234.parstagram.models.Comment;
 import com.lucasg234.parstagram.models.Post;
 import com.parse.ParseException;
-import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
@@ -26,18 +25,18 @@ import org.parceler.Parcels;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link CommentFragmentDialog#newInstance} factory method to
+ * Use the {@link CommentDialogFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CommentFragmentDialog extends DialogFragment {
+public class CommentDialogFragment extends DialogFragment {
 
-    private static final String TAG = "CommentFragmentDialog";
+    private static final String TAG = "CommentDialogFragment";
     private static final String ARG_PARENT_POST = "parent_post_arg_1";
 
     private Post mParentPost;
     private FragmentCommentDialogBinding mBinding;
 
-    public CommentFragmentDialog() {
+    public CommentDialogFragment() {
         // Required empty public constructor
     }
 
@@ -45,11 +44,10 @@ public class CommentFragmentDialog extends DialogFragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @return A new instance of fragment CommentFragmentDialog.
+     * @return A new instance of fragment CommentDialogFragment.
      */
-    // TODO: Rename and change types and number of parameters
-    public static CommentFragmentDialog newInstance(Post parent) {
-        CommentFragmentDialog fragment = new CommentFragmentDialog();
+    public static CommentDialogFragment newInstance(Post parent) {
+        CommentDialogFragment fragment = new CommentDialogFragment();
         Bundle args = new Bundle();
         args.putParcelable(ARG_PARENT_POST, Parcels.wrap(parent));
         fragment.setArguments(args);

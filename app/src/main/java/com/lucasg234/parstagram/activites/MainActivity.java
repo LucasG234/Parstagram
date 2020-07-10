@@ -2,20 +2,25 @@ package com.lucasg234.parstagram.activites;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
 import android.text.format.DateUtils;
+import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.lucasg234.parstagram.R;
 import com.lucasg234.parstagram.databinding.ActivityMainBinding;
+import com.lucasg234.parstagram.fragments.CommentDialogFragment;
 import com.lucasg234.parstagram.fragments.ComposeFragment;
 import com.lucasg234.parstagram.fragments.FeedFragment;
+import com.lucasg234.parstagram.fragments.PostDialogFragment;
 import com.lucasg234.parstagram.fragments.ProfileFragment;
-import com.lucasg234.parstagram.fragments.SettingsFragment;
+import com.lucasg234.parstagram.fragments.SettingsDialogFragment;
 
 import java.util.Date;
 
@@ -67,5 +72,29 @@ public class MainActivity extends AppCompatActivity {
     public static String dateToRelative(Date date) {
         return String.valueOf(DateUtils.getRelativeTimeSpanString(date.getTime(),
                 System.currentTimeMillis(), 0L, DateUtils.FORMAT_ABBREV_TIME));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_settings, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle presses on the action bar items
+        switch (item.getItemId()) {
+            case R.id.menuSettings:
+                openSettingsDialog();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void openSettingsDialog() {
+        final FragmentManager fragmentManager = getSupportFragmentManager();
+        DialogFragment dialogFragment = SettingsDialogFragment.newInstance();
+        dialogFragment.show(fragmentManager, "fragment_post_settings");
     }
 }

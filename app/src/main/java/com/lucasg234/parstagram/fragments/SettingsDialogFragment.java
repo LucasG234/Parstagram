@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -13,23 +14,21 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.lucasg234.parstagram.activites.LoginActivity;
-import com.lucasg234.parstagram.databinding.FragmentSettingsBinding;
+import com.lucasg234.parstagram.databinding.FragmentSettingsDialogBinding;
 import com.parse.ParseUser;
-
-import org.jetbrains.annotations.NotNull;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link SettingsFragment#newInstance} factory method to
+ * Use the {@link SettingsDialogFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SettingsFragment extends Fragment {
+public class SettingsDialogFragment extends DialogFragment {
 
-    private static final String TAG = "SettingsFragment";
+    private static final String TAG = "SettingsDialogFragment";
 
-    private FragmentSettingsBinding mBinding;
+    private FragmentSettingsDialogBinding mBinding;
 
-    public SettingsFragment() {
+    public SettingsDialogFragment() {
         // Required empty public constructor
     }
 
@@ -37,10 +36,10 @@ public class SettingsFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @return A new instance of fragment SettingsFragment.
+     * @return A new instance of fragment SettingsDialogFragment.
      */
-    public static SettingsFragment newInstance() {
-        return new SettingsFragment();
+    public static SettingsDialogFragment newInstance() {
+        return new SettingsDialogFragment();
     }
 
     @Override
@@ -52,7 +51,7 @@ public class SettingsFragment extends Fragment {
     public View onCreateView(@NonNull  LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        mBinding = FragmentSettingsBinding.inflate(inflater, container, false);
+        mBinding = FragmentSettingsDialogBinding.inflate(inflater, container, false);
         return mBinding.getRoot();
     }
 
@@ -61,7 +60,7 @@ public class SettingsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         // Ensure mBinding is referring to the correct view
-        mBinding = FragmentSettingsBinding.bind(view);
+        mBinding = FragmentSettingsDialogBinding.bind(view);
 
         mBinding.logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
