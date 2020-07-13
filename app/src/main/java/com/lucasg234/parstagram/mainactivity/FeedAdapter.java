@@ -16,6 +16,7 @@ import com.lucasg234.parstagram.databinding.ItemPostBinding;
 import com.lucasg234.parstagram.models.Post;
 import com.parse.CountCallback;
 import com.parse.ParseException;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import org.jetbrains.annotations.NotNull;
@@ -124,7 +125,10 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
             });
 
             // Determine if the post is already liked before setting initial image on like button
-            post.isLikedBy(ParseUser.getCurrentUser(), new CountCallback() {
+            ParseQuery<ParseUser> query = post.getLikeQuery();
+            query.whereEqualTo(Post.KEY_OBJECT_ID, ParseUser.getCurrentUser().getObjectId());
+            query.countInBackground();
+            query.countInBackground(new CountCallback() {
                 @Override
                 public void done(int count, ParseException e) {
                     if(e != null) {

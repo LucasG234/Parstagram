@@ -55,7 +55,6 @@ public class PostDialogFragment extends DialogFragment {
      *
      * @return A new instance of fragment PostDialogFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static PostDialogFragment newInstance(Post post) {
         PostDialogFragment fragment = new PostDialogFragment();
         Bundle args = new Bundle();

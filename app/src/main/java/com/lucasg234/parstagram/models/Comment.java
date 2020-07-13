@@ -21,8 +21,6 @@ public class Comment extends ParseObject {
     // Empty constructor required to use Parceler
     public Comment() {}
 
-    //TODO= implement constructor to clean code
-
     public String getText() {
         return getString(KEY_TEXT);
     }

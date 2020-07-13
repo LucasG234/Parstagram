@@ -26,8 +26,6 @@ public class Post extends ParseObject {
     // Empty constructor required to use Parceler
     public Post() {}
 
-    //TODO= implement constructor to clean code
-
     public String getDescription() {
         return getString(KEY_DESCRIPTION);
     }
@@ -41,14 +39,10 @@ public class Post extends ParseObject {
     }
 
 
-    // Counts how many times a user occurs in the likedBy list
-    // CountCallback will return either 0 or 1
-    //TODO: change?
-    public void isLikedBy(ParseUser user, CountCallback callback) {
+    // Returns ParseQuery used to find likes associated with the post
+    public ParseQuery<ParseUser> getLikeQuery() {
         ParseRelation<ParseUser> likedBy = getRelation(KEY_LIKED_BY);
-        ParseQuery<ParseUser> query = likedBy.getQuery();
-        query.whereEqualTo(KEY_OBJECT_ID, user.getObjectId());
-        query.countInBackground(callback);
+        return likedBy.getQuery();
     }
 
     // Returns ParseQuery used to find comments associated with the post
