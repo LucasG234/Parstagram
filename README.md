@@ -50,7 +50,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 Here are two walkthroughs of implemented user stories:
 
 ![Walkthrough](walkthrough.gif)
-![Persistence](walthrough_persistence.gif)
+![Persistence](walkthrough_persistence.gif)
 
 GIF created with [Kap](http://www.getkap.co).
 
