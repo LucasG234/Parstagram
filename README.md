@@ -31,7 +31,8 @@ The following **stretch** features are implemented:
   - [ ] Tapping on a post's username or profile photo goes to that user's profile page
   - [ ] User Profile shows posts in a grid view
 - [x] User can comment on a post and see all comments for each post in the post details screen.
-- [x] User can like a post and see number of likes for each post in the post details screen.
+- [x] User can like a post 
+    - [ ] User can see number of likes for each post in the post details screen.
 
 The following **additional** features are implemented:
 
@@ -46,9 +47,10 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 ## Video Walkthrough
 
-Here's a walkthrough of implemented user stories:
+Here are two walkthroughs of implemented user stories:
 
 ![Walkthrough](walkthrough.gif)
+![Persistence](walthrough_persistence.gif)
 
 GIF created with [Kap](http://www.getkap.co).
 
