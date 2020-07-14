@@ -66,12 +66,6 @@ public class MainActivity extends AppCompatActivity {
         mBinding.bottomNavigationView.setSelectedItemId(R.id.menuFeed);
     }
 
-    // Static method stored here for use through Activity
-    public static String dateToRelative(Date date) {
-        return String.valueOf(DateUtils.getRelativeTimeSpanString(date.getTime(),
-                System.currentTimeMillis(), 0L, DateUtils.FORMAT_ABBREV_TIME));
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_settings, menu);

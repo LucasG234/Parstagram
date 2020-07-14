@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.lucasg234.parstagram.databinding.ItemCommentBinding;
 import com.lucasg234.parstagram.mainactivity.MainActivity;
 import com.lucasg234.parstagram.models.Comment;
+import com.lucasg234.parstagram.util.Utils;
 
 import java.util.Date;
 import java.util.List;
@@ -61,7 +62,7 @@ public class PostDialogAdapter extends RecyclerView.Adapter<PostDialogAdapter.Po
             mBinding.commentUsername.setText(comment.getUser().getUsername());
             // Use relative time for post created at description
             Date createdAt = comment.getCreatedAt();
-            mBinding.commentCreatedAt.setText(MainActivity.dateToRelative(createdAt));
+            mBinding.commentCreatedAt.setText(Utils.dateToRelative(createdAt));
         }
     }
 }

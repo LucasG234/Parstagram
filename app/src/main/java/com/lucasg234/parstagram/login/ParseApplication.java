@@ -1,4 +1,4 @@
-package com.lucasg234.parstagram.application;
+package com.lucasg234.parstagram.login;
 
 import android.app.Application;
 

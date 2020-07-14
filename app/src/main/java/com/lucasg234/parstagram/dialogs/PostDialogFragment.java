@@ -18,6 +18,7 @@ import com.lucasg234.parstagram.databinding.FragmentPostDialogBinding;
 import com.lucasg234.parstagram.mainactivity.MainActivity;
 import com.lucasg234.parstagram.models.Comment;
 import com.lucasg234.parstagram.models.Post;
+import com.lucasg234.parstagram.util.Utils;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -95,7 +96,7 @@ public class PostDialogFragment extends DialogFragment {
 
         // Use relative time for post created at description
         Date createdAt = mPost.getCreatedAt();
-        mBinding.detailsCreatedAt.setText(MainActivity.dateToRelative(createdAt));
+        mBinding.detailsCreatedAt.setText(Utils.dateToRelative(createdAt));
 
         if (mPost.getImage() != null) {
             Glide.with(getContext())

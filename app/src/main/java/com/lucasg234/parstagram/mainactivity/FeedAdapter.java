@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide;
 import com.lucasg234.parstagram.R;
 import com.lucasg234.parstagram.databinding.ItemPostBinding;
 import com.lucasg234.parstagram.models.Post;
+import com.lucasg234.parstagram.util.Utils;
 import com.parse.CountCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -94,7 +95,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
 
             // Use relative time for post created at description
             Date createdAt = post.getCreatedAt();
-            mBinding.postCreatedAt.setText(MainActivity.dateToRelative(createdAt));
+            mBinding.postCreatedAt.setText(Utils.dateToRelative(createdAt));
 
             // Set image on the post
             if (post.getImage() != null) {
