@@ -3,18 +3,17 @@ package com.lucasg234.parstagram.dialogs;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.lucasg234.parstagram.login.LoginActivity;
 import com.lucasg234.parstagram.databinding.FragmentSettingsDialogBinding;
+import com.lucasg234.parstagram.login.LoginActivity;
 import com.parse.ParseUser;
 
 /**
@@ -48,7 +47,7 @@ public class SettingsDialogFragment extends DialogFragment {
     }
 
     @Override
-    public View onCreateView(@NonNull  LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         mBinding = FragmentSettingsDialogBinding.inflate(inflater, container, false);

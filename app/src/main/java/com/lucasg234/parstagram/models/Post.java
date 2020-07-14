@@ -1,6 +1,5 @@
 package com.lucasg234.parstagram.models;
 
-import com.parse.CountCallback;
 import com.parse.ParseClassName;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
@@ -24,7 +23,8 @@ public class Post extends ParseObject {
     public static final int QUERY_LIMIT = 20;
 
     // Empty constructor required to use Parceler
-    public Post() {}
+    public Post() {
+    }
 
     public String getDescription() {
         return getString(KEY_DESCRIPTION);

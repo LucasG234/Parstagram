@@ -1,15 +1,15 @@
 package com.lucasg234.parstagram.mainactivity;
 
+import android.os.Bundle;
+import android.text.format.DateUtils;
+import android.view.Menu;
+import android.view.MenuItem;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-
-import android.os.Bundle;
-import android.text.format.DateUtils;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.lucasg234.parstagram.R;
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment fragment = null;
-                switch(item.getItemId()) {
+                switch (item.getItemId()) {
                     case R.id.menuCompose:
                         fragment = ComposeFragment.newInstance();
                         break;

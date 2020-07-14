@@ -7,11 +7,6 @@ import android.graphics.Matrix;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.core.content.FileProvider;
-import androidx.fragment.app.Fragment;
-
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -19,6 +14,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.core.content.FileProvider;
+import androidx.fragment.app.Fragment;
 
 import com.lucasg234.parstagram.R;
 import com.lucasg234.parstagram.databinding.FragmentComposeBinding;
@@ -90,12 +89,11 @@ public class ComposeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 String description = mBinding.editTextDescription.getText().toString();
-                if(description.isEmpty()) {
+                if (description.isEmpty()) {
                     Toast.makeText(getContext(),
                             getString(R.string.empty_description), Toast.LENGTH_SHORT).show();
                     return;
-                }
-                else if( mPhotoFile == null || mBinding.imagePostPreview.getDrawable() == null) {
+                } else if (mPhotoFile == null || mBinding.imagePostPreview.getDrawable() == null) {
                     Toast.makeText(getContext(),
                             getString(R.string.empty_image), Toast.LENGTH_SHORT).show();
                     return;
@@ -124,7 +122,7 @@ public class ComposeFragment extends Fragment {
             if (resultCode == RESULT_OK) {
                 // by this point we have the camera photo on disk
                 Bitmap takenImage = rotateBitmapOrientation(mPhotoFile.getAbsolutePath());
-                if(takenImage == null) {
+                if (takenImage == null) {
                     takenImage = BitmapFactory.decodeFile(mPhotoFile.getAbsolutePath());
                 }
                 // RESIZE BITMAP, see section below
@@ -144,7 +142,7 @@ public class ComposeFragment extends Fragment {
         post.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
-                if(e != null) {
+                if (e != null) {
                     Log.e(TAG, "Error while saving post", e);
                     Toast.makeText(getContext(),
                             getString(R.string.error_image_save), Toast.LENGTH_SHORT).show();
@@ -186,7 +184,7 @@ public class ComposeFragment extends Fragment {
         File mediaStorageDir = new File(getContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES), TAG);
 
         // Create the storage directory if it does not exist
-        if (!mediaStorageDir.exists() && !mediaStorageDir.mkdirs()){
+        if (!mediaStorageDir.exists() && !mediaStorageDir.mkdirs()) {
             Log.d(TAG, "failed to create directory");
         }
 

@@ -5,6 +5,7 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
 import com.parse.ParseUser;
 
 // Class which acts similar to feed, but only shows current User's posts

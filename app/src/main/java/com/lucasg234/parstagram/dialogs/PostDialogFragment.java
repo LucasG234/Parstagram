@@ -1,18 +1,17 @@
 package com.lucasg234.parstagram.dialogs;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
-
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.lucasg234.parstagram.R;
@@ -102,13 +101,12 @@ public class PostDialogFragment extends DialogFragment {
         Date createdAt = mPost.getCreatedAt();
         mBinding.detailsCreatedAt.setText(MainActivity.dateToRelative(createdAt));
 
-        if(mPost.getImage() != null) {
+        if (mPost.getImage() != null) {
             Glide.with(getContext())
                     .load(mPost.getImage().getUrl())
                     .placeholder(R.drawable.placeholder_image)
                     .into(mBinding.detailsImage);
-        }
-        else {
+        } else {
             Glide.with(getContext())
                     .load(R.drawable.placeholder_image)
                     .into(mBinding.detailsImage);
@@ -125,7 +123,7 @@ public class PostDialogFragment extends DialogFragment {
         query.findInBackground(new FindCallback<Comment>() {
             @Override
             public void done(List<Comment> comments, ParseException e) {
-                if(e != null) {
+                if (e != null) {
                     Log.e(TAG, "Error querying comments", e);
                     Toast.makeText(getContext(), getString(R.string.error_load), Toast.LENGTH_SHORT).show();
                     return;

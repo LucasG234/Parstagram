@@ -93,7 +93,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
             mBinding.postCreatedAt.setText(MainActivity.dateToRelative(createdAt));
 
             // Set image on the post
-            if(post.getImage() != null) {
+            if (post.getImage() != null) {
                 Glide.with(mContext)
                         .load(post.getImage().getUrl())
                         .placeholder(R.drawable.placeholder_image)
@@ -105,8 +105,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
                         mPostClickListener.onPostClicked(getAdapterPosition(), FeedFragment.DIALOG_TYPE_POST);
                     }
                 });
-            }
-            else {
+            } else {
                 Glide.with(mContext)
                         .load(R.drawable.placeholder_image)
                         .into(mBinding.postImage);
@@ -131,13 +130,13 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
             query.countInBackground(new CountCallback() {
                 @Override
                 public void done(int count, ParseException e) {
-                    if(e != null) {
+                    if (e != null) {
                         Log.e(TAG, "Failed to load like count", e);
                         Toast.makeText(mContext, mContext.getString(R.string.error_load), Toast.LENGTH_SHORT).show();
                         return;
                     }
                     mLikedByCurrentUser = count > 0;
-                    if(mLikedByCurrentUser) {
+                    if (mLikedByCurrentUser) {
                         // If already liked, change image
                         Glide.with(mContext)
                                 .load(R.drawable.ufi_heart_active)
@@ -149,7 +148,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
             mBinding.postLikeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(mLikedByCurrentUser) {
+                    if (mLikedByCurrentUser) {
                         post.removeLike(ParseUser.getCurrentUser());
                         // Change image to unliked version
                         Glide.with(mContext)

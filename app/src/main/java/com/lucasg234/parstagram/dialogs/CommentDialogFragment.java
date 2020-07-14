@@ -1,17 +1,16 @@
 package com.lucasg234.parstagram.dialogs;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
 
 import com.lucasg234.parstagram.R;
 import com.lucasg234.parstagram.databinding.FragmentCommentDialogBinding;
@@ -95,7 +94,7 @@ public class CommentDialogFragment extends DialogFragment {
         newComment.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
-                if(e != null) {
+                if (e != null) {
                     Log.e(TAG, "Error while saving comment", e);
                     Toast.makeText(getContext(),
                             getString(R.string.error_comment_save), Toast.LENGTH_SHORT).show();

@@ -19,7 +19,8 @@ public class Comment extends ParseObject {
 
 
     // Empty constructor required to use Parceler
-    public Comment() {}
+    public Comment() {
+    }
 
     public String getText() {
         return getString(KEY_TEXT);
@@ -30,7 +31,7 @@ public class Comment extends ParseObject {
     }
 
     public Post getParentPost() {
-        return (Post)getParseObject(KEY_PARENT_POST);
+        return (Post) getParseObject(KEY_PARENT_POST);
     }
 
     public void setText(String text) {

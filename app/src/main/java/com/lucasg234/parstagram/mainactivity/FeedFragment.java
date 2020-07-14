@@ -1,6 +1,11 @@
 package com.lucasg234.parstagram.mainactivity;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,16 +16,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
-
-import com.lucasg234.parstagram.dialogs.CommentDialogFragment;
-import com.lucasg234.parstagram.dialogs.PostDialogFragment;
 import com.lucasg234.parstagram.R;
 import com.lucasg234.parstagram.databinding.FragmentFeedBinding;
+import com.lucasg234.parstagram.dialogs.CommentDialogFragment;
+import com.lucasg234.parstagram.dialogs.PostDialogFragment;
 import com.lucasg234.parstagram.models.Post;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -120,19 +119,18 @@ public class FeedFragment extends Fragment {
         this.mFilterUser = user;
     }
 
-
     protected void queryPosts() {
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.addDescendingOrder(Post.KEY_CREATED_AT);
         query.setLimit(Post.QUERY_LIMIT);
         query.include(Post.KEY_USER);
-        if(mFilterUser != null) {
+        if (mFilterUser != null) {
             query.whereEqualTo(Post.KEY_USER, mFilterUser);
         }
         query.findInBackground(new FindCallback<Post>() {
             @Override
             public void done(List<Post> posts, ParseException e) {
-                if(e != null) {
+                if (e != null) {
                     Log.e(TAG, "Error querying posts", e);
                     Toast.makeText(getContext(), getString(R.string.error_load), Toast.LENGTH_SHORT).show();
                     return;
@@ -153,14 +151,14 @@ public class FeedFragment extends Fragment {
         query.addDescendingOrder(Post.KEY_CREATED_AT);
         query.setLimit(Post.QUERY_LIMIT);
         query.include(Post.KEY_USER);
-        query.whereLessThan(Post.KEY_CREATED_AT, mPosts.get(mPosts.size()-1).getCreatedAt());
-        if(mFilterUser != null) {
+        query.whereLessThan(Post.KEY_CREATED_AT, mPosts.get(mPosts.size() - 1).getCreatedAt());
+        if (mFilterUser != null) {
             query.whereEqualTo(Post.KEY_USER, mFilterUser);
         }
         query.findInBackground(new FindCallback<Post>() {
             @Override
             public void done(List<Post> posts, ParseException e) {
-                if(e != null) {
+                if (e != null) {
                     Log.e(TAG, "Error querying for additional posts", e);
                     Toast.makeText(getContext(), getString(R.string.error_load), Toast.LENGTH_SHORT).show();
                     return;
@@ -174,7 +172,7 @@ public class FeedFragment extends Fragment {
     private void createDialogFragment(int position, int dialogFragmentType) {
         final FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         DialogFragment dialogFragment;
-        switch(dialogFragmentType) {
+        switch (dialogFragmentType) {
             case DIALOG_TYPE_COMMENT:
                 dialogFragment = CommentDialogFragment.newInstance(mPosts.get(position));
                 break;
