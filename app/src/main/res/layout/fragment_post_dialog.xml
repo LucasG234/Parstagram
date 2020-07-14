@@ -14,27 +14,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
+            <include
                 android:id="@+id/detailsUsername"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/smallMargin"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                app:layout_constraintEnd_toStartOf="@+id/detailsCreatedAt"
-                app:layout_constraintHorizontal_bias="0.0"
+                layout="@layout/username_display"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Lucas" />
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+            <include
                 android:id="@+id/detailsCreatedAt"
+                layout="@layout/created_at_display"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/smallMargin"
                 app:layout_constraintBottom_toBottomOf="@id/detailsUsername"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/detailsUsername"
-                tools:text="2020-07-08T17:51:06.405Z" />
+                app:layout_constraintTop_toTopOf="@id/detailsUsername" />
 
             <ImageView
                 android:id="@+id/detailsImage"
@@ -47,15 +40,14 @@
                 app:layout_constraintTop_toBottomOf="@id/detailsUsername"
                 tools:srcCompat="@tools:sample/avatars" />
 
-            <TextView
+            <include
                 android:id="@+id/detailsDescription"
+                layout="@layout/description_display"
                 android:layout_width="@dimen/matchConstraint"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/smallMargin"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/detailsImage"
-                tools:text="Here is a quite long example sample text which will help me with debugging this view :))))" />
+                app:layout_constraintTop_toBottomOf="@+id/detailsImage" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/detailsRecyclerView"

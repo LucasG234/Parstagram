@@ -1,31 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
+    <include
         android:id="@+id/postUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/smallMargin"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        tools:text="Lucas"
+        layout="@layout/username_display"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <include
         android:id="@+id/postCreatedAt"
+        layout="@layout/created_at_display"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/smallMargin"
-        tools:text="10 minutes ago"
+        app:layout_constraintBottom_toBottomOf="@id/postUsername"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/postUsername"
-        app:layout_constraintBottom_toBottomOf="@id/postUsername"/>
-
+        app:layout_constraintTop_toTopOf="@id/postUsername" />
 
     <ImageView
         android:id="@+id/postImage"
@@ -42,9 +35,9 @@
         android:layout_width="@dimen/standardIconSize"
         android:layout_height="@dimen/standardIconSize"
         android:layout_margin="@dimen/smallMargin"
+        android:tint="@color/colorInteractIcons"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/postImage"
-        android:tint="@color/colorInteractIcons"
         app:srcCompat="@drawable/ufi_heart" />
 
     <ImageView
@@ -52,9 +45,9 @@
         android:layout_width="@dimen/standardIconSize"
         android:layout_height="@dimen/standardIconSize"
         android:layout_margin="@dimen/smallMargin"
+        android:tint="@color/colorInteractIcons"
         app:layout_constraintStart_toEndOf="@+id/postLikeButton"
         app:layout_constraintTop_toBottomOf="@+id/postImage"
-        android:tint="@color/colorInteractIcons"
         app:srcCompat="@drawable/ufi_comment" />
 
     <ImageView
@@ -62,9 +55,9 @@
         android:layout_width="@dimen/standardIconSize"
         android:layout_height="@dimen/standardIconSize"
         android:layout_margin="@dimen/smallMargin"
+        android:tint="@color/colorInteractIcons"
         app:layout_constraintStart_toEndOf="@+id/postCommentButton"
         app:layout_constraintTop_toBottomOf="@+id/postImage"
-        android:tint="@color/colorInteractIcons"
         app:srcCompat="@drawable/ufi_new_direct" />
 
     <ImageView
@@ -72,20 +65,18 @@
         android:layout_width="@dimen/standardIconSize"
         android:layout_height="@dimen/standardIconSize"
         android:layout_margin="@dimen/smallMargin"
+        android:tint="@color/colorInteractIcons"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/postImage"
-        android:tint="@color/colorInteractIcons"
         app:srcCompat="@drawable/ufi_save" />
 
-    <TextView
+    <include
         android:id="@+id/postDescription"
+        layout="@layout/description_display"
         android:layout_width="@dimen/matchConstraint"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/smallMargin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/postLikeButton"
-        tools:text="Here is a quite long example sample text which will help me with debugging this view :))))" />
-
+        app:layout_constraintTop_toBottomOf="@+id/postLikeButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

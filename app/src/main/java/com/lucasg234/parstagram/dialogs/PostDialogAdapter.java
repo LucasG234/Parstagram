@@ -58,11 +58,11 @@ public class PostDialogAdapter extends RecyclerView.Adapter<PostDialogAdapter.Po
         }
 
         public void bind(Comment comment) {
-            mBinding.commentText.setText(comment.getText());
-            mBinding.commentUsername.setText(comment.getUser().getUsername());
+            mBinding.commentText.descriptionText.setText(comment.getText());
+            mBinding.commentUsername.usernameText.setText(comment.getUser().getUsername());
             // Use relative time for post created at description
             Date createdAt = comment.getCreatedAt();
-            mBinding.commentCreatedAt.setText(Utils.dateToRelative(createdAt));
+            mBinding.commentCreatedAt.createdAtText.setText(Utils.dateToRelative(createdAt));
         }
     }
 }

@@ -1,39 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
+    <include
         android:id="@+id/commentUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/smallMargin"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        layout="@layout/username_display"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Lucas" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <include
         android:id="@+id/commentCreatedAt"
+        layout="@layout/created_at_display"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/smallMargin"
         app:layout_constraintBottom_toBottomOf="@id/commentUsername"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/commentUsername"
-        tools:text="10 minutes ago" />
+        app:layout_constraintTop_toTopOf="@id/commentUsername" />
 
-    <TextView
+    <include
         android:id="@+id/commentText"
+        layout="@layout/description_display"
         android:layout_width="@dimen/matchConstraint"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/smallMargin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/commentUsername"
-        tools:text="Here is a quite long example sample text which will help me with debugging this view :))))" />
-
+        app:layout_constraintTop_toBottomOf="@id/commentUsername" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

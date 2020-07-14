@@ -86,8 +86,8 @@ public class PostDialogFragment extends DialogFragment {
         // Ensure mBinding is referring to the correct view
         mBinding = FragmentPostDialogBinding.bind(view);
 
-        mBinding.detailsDescription.setText(mPost.getDescription());
-        mBinding.detailsUsername.setText(mPost.getUser().getUsername());
+        mBinding.detailsDescription.descriptionText.setText(mPost.getDescription());
+        mBinding.detailsUsername.usernameText.setText(mPost.getUser().getUsername());
 
         mComments = new ArrayList<>();
         mAdapter = new PostDialogAdapter(getContext(), mComments);
@@ -96,7 +96,7 @@ public class PostDialogFragment extends DialogFragment {
 
         // Use relative time for post created at description
         Date createdAt = mPost.getCreatedAt();
-        mBinding.detailsCreatedAt.setText(Utils.dateToRelative(createdAt));
+        mBinding.detailsCreatedAt.createdAtText.setText(Utils.dateToRelative(createdAt));
 
         if (mPost.getImage() != null) {
             Glide.with(getContext())

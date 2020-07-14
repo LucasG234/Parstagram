@@ -25,6 +25,9 @@
     <string name="error_image_save">System encountered an error saving your image.</string>
     <string name="error_comment_save">System encountered an error saving your comment.</string>
     <string name="error_load">System encountered a networking error while loading resources.</string>
+    <string name="error_picture">Picture wasn\'t taken!</string>
     <string name="empty_description">Description cannot be empty.</string>
     <string name="empty_image">Must add an image to post.</string>
+
+    <!-- Strings for UI hints -->
 </resources>

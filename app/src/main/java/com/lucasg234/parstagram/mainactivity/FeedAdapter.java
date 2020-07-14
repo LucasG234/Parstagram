@@ -90,12 +90,12 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
         }
 
         public void bind(final Post post) {
-            mBinding.postDescription.setText(post.getDescription());
-            mBinding.postUsername.setText(post.getUser().getUsername());
+            mBinding.postDescription.descriptionText.setText(post.getDescription());
+            mBinding.postUsername.usernameText.setText(post.getUser().getUsername());
 
             // Use relative time for post created at description
             Date createdAt = post.getCreatedAt();
-            mBinding.postCreatedAt.setText(Utils.dateToRelative(createdAt));
+            mBinding.postCreatedAt.createdAtText.setText(Utils.dateToRelative(createdAt));
 
             // Set image on the post
             if (post.getImage() != null) {
