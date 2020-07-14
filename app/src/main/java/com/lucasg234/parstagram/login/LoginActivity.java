@@ -16,6 +16,10 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
+/**
+ * Launcher activity (first activity on startup)
+ * Allows users to log into existing accounts and create new ones
+ */
 public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "LoginActivity";

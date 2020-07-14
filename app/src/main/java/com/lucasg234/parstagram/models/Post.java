@@ -9,7 +9,10 @@ import com.parse.ParseUser;
 
 import org.parceler.Parcel;
 
-
+/**
+ * Parse model which stores User created posts
+ * Keys specify all of the object's fields
+ */
 @Parcel(analyze = {Post.class})
 @ParseClassName("Post")
 public class Post extends ParseObject {

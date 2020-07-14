@@ -14,6 +14,10 @@ import com.lucasg234.parstagram.models.Comment;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * RecyclerView Adapter for the feed in PostDialogFragment
+ * Holds all comments on a post in its "detail view"
+ */
 public class PostDialogAdapter extends RecyclerView.Adapter<PostDialogAdapter.PostDialogViewHolder> {
 
     private static final String TAG = "PostDialogAdapter";

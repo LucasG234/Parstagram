@@ -10,16 +10,14 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
 
 import com.lucasg234.parstagram.databinding.FragmentSettingsDialogBinding;
 import com.lucasg234.parstagram.login.LoginActivity;
 import com.parse.ParseUser;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link SettingsDialogFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * Modal Overlay which appears when the settings button in the ActionBar is clicked
+ * Shows an option to logout of the current user
  */
 public class SettingsDialogFragment extends DialogFragment {
 
@@ -32,10 +30,7 @@ public class SettingsDialogFragment extends DialogFragment {
     }
 
     /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @return A new instance of fragment SettingsDialogFragment.
+     * Use this factory method to create a new instance of SettingsDialogFragment
      */
     public static SettingsDialogFragment newInstance() {
         return new SettingsDialogFragment();

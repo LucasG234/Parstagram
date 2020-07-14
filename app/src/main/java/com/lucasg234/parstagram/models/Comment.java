@@ -7,7 +7,10 @@ import com.parse.ParseUser;
 
 import org.parceler.Parcel;
 
-
+/**
+ * Parse model which represents user created comments
+ * Keys represent all of the object's fields
+ */
 @Parcel(analyze = {Comment.class})
 @ParseClassName("Comment")
 public class Comment extends ParseObject {

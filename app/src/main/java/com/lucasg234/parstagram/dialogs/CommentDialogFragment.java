@@ -10,7 +10,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
 
 import com.lucasg234.parstagram.R;
 import com.lucasg234.parstagram.databinding.FragmentCommentDialogBinding;
@@ -23,9 +22,8 @@ import com.parse.SaveCallback;
 import org.parceler.Parcels;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link CommentDialogFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * Modal Overlay which appears whenever users click on the comment icon on a post
+ * Allows users to write comments and then saves them to Parse
  */
 public class CommentDialogFragment extends DialogFragment {
 
@@ -40,10 +38,7 @@ public class CommentDialogFragment extends DialogFragment {
     }
 
     /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @return A new instance of fragment CommentDialogFragment.
+     * Use this factory method to create objects of CommentDialogFragment
      */
     public static CommentDialogFragment newInstance(Post parent) {
         CommentDialogFragment fragment = new CommentDialogFragment();
@@ -86,6 +81,9 @@ public class CommentDialogFragment extends DialogFragment {
         });
     }
 
+    /**
+     * Saves comment created by user to Parse
+     */
     private void saveComment() {
         final Comment newComment = new Comment();
         newComment.setText(mBinding.commentSubmitText.getText().toString());

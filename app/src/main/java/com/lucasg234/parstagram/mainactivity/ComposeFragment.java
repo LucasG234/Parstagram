@@ -36,9 +36,8 @@ import static android.app.Activity.RESULT_OK;
 
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link FeedFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * Fragment contained within the MainActivity
+ * Allows users to create posts with text and one photo, then saves them to Parse
  */
 public class ComposeFragment extends Fragment {
 
@@ -55,10 +54,7 @@ public class ComposeFragment extends Fragment {
     }
 
     /**
-     * Use this factory method to create a new instance of
-     * this fragment.
-     *
-     * @return A new instance of fragment ComposeFragment.
+     * Use this factory method to create a new instance of ComposeFragment
      */
     public static ComposeFragment newInstance() {
         return new ComposeFragment();
@@ -114,7 +110,9 @@ public class ComposeFragment extends Fragment {
 
     }
 
-
+    /**
+     * Takes in result after camera is utilized
+     */
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -134,6 +132,9 @@ public class ComposeFragment extends Fragment {
         }
     }
 
+    /**
+     * Saves user created post to Parse
+     */
     private void savePost(String description, ParseUser currentUser, File photoFile) {
         Post post = new Post();
         post.setDescription(description);
@@ -157,6 +158,9 @@ public class ComposeFragment extends Fragment {
         });
     }
 
+    /**
+     * Launches camera for photo
+     */
     private void launchCamera() {
         // create Intent to take a picture and return control to the calling application
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -176,7 +180,9 @@ public class ComposeFragment extends Fragment {
         }
     }
 
-    // Returns the File for a photo stored on disk given the fileName
+    /**
+     * Returns the File for a photo stored on disk given the fileName
+     */
     public File getPhotoFileUri(String fileName) {
         // Get safe storage directory for photos
         // Use `getExternalFilesDir` on Context to access package-specific directories.
@@ -192,6 +198,9 @@ public class ComposeFragment extends Fragment {
         return new File(mediaStorageDir.getPath() + File.separator + fileName);
     }
 
+    /**
+     * Fixes rotation of an image for preview
+     */
     public Bitmap rotateBitmapOrientation(String photoFilePath) {
         // Create and configure BitmapFactory
         BitmapFactory.Options bounds = new BitmapFactory.Options();

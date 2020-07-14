@@ -10,7 +10,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.bumptech.glide.Glide;
@@ -30,9 +29,9 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link PostDialogFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * Modal Overlay created when the image in a post is clicked on
+ * Creates a "detail view" containing all information about a post
+ * Also includes a RecyclerView showing all comment on the post
  */
 public class PostDialogFragment extends DialogFragment {
 
@@ -49,10 +48,7 @@ public class PostDialogFragment extends DialogFragment {
     }
 
     /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @return A new instance of fragment PostDialogFragment.
+     * Use this factory method to create a new instance of PostDialogFragment
      */
     public static PostDialogFragment newInstance(Post post) {
         PostDialogFragment fragment = new PostDialogFragment();
@@ -115,6 +111,9 @@ public class PostDialogFragment extends DialogFragment {
         queryComments();
     }
 
+    /**
+     * Collects all comments on a post and puts them into the PostDialogAdapter
+     */
     private void queryComments() {
         ParseQuery<Comment> query = mPost.getCommentQuery();
         query.addDescendingOrder(Comment.KEY_CREATED_AT);

@@ -18,6 +18,10 @@ import com.lucasg234.parstagram.dialogs.SettingsDialogFragment;
 
 import java.util.Date;
 
+/**
+ * Central activity which holds FeedFragment, ComposeFragment, and ProfileFragment
+ * Handles navigation through a BottomNavigationView
+ */
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";

@@ -32,9 +32,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link FeedFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * Fragment contained within the MainActivity
+ * Hosts a RecyclerView which displays all posts queried from Parse
  */
 public class FeedFragment extends Fragment {
 
@@ -55,10 +54,7 @@ public class FeedFragment extends Fragment {
     }
 
     /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @return A new instance of fragment FeedFragment.
+     * Use this factory method to create a new instance of FeedFragment
      */
     public static FeedFragment newInstance() {
         return new FeedFragment();
@@ -119,6 +115,9 @@ public class FeedFragment extends Fragment {
         this.mFilterUser = user;
     }
 
+    /**
+     * Resets the FeedAdapter to hold a new set of most recent posts
+     */
     protected void queryPosts() {
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.addDescendingOrder(Post.KEY_CREATED_AT);
@@ -145,6 +144,9 @@ public class FeedFragment extends Fragment {
         });
     }
 
+    /**
+     * Adds new posts to the end of the FeedAdapter
+     */
     private void queryAdditionalPosts() {
         Log.i(TAG, "Loading more posts from endless scroll");
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
@@ -169,6 +171,9 @@ public class FeedFragment extends Fragment {
         });
     }
 
+    /**
+     * Creates a CommentDialogFragment or a PostDialogFragment
+     */
     private void createDialogFragment(int position, int dialogFragmentType) {
         final FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         DialogFragment dialogFragment;

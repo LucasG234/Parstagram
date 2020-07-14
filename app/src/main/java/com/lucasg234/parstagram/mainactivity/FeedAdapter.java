@@ -24,6 +24,10 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * RecyclerView Adapter utilized in the FeedFragment
+ * Holds all posts loaded from the Parse backend
+ */
 public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder> {
 
     private static final String TAG = "FeedAdapter";

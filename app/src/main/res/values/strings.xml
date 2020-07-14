@@ -1,27 +1,30 @@
 <resources>
     <string name="app_name">Parstagram</string>
 
+    <!-- Strings for login features -->
     <string name="login_username">Username</string>
     <string name="login_password">Password</string>
     <string name="login_button">Login</string>
     <string name="logout_button">Logout</string>
     <string name="register_button">Sign Up</string>
 
+    <!-- Strings for bottom navigation bar -->
     <string name="menu_feed">Feed</string>
     <string name="menu_compose">Compose</string>
     <string name="menu_profile">Profile</string>
 
+    <!-- Strings for compose page -->
     <string name="take_picture_button">Take Picture</string>
     <string name="picture_description">Add a description!</string>
     <string name="post_button">Post</string>
     <string name="compose_comment_hint">Add a comment here!</string>
 
+    <!-- Strings for Toast error messages -->
     <string name="error_login">Error with login. Please check username/password and try again.</string>
     <string name="error_registration">Error with registration. This username may already be taken.</string>
     <string name="error_image_save">System encountered an error saving your image.</string>
     <string name="error_comment_save">System encountered an error saving your comment.</string>
     <string name="error_load">System encountered a networking error while loading resources.</string>
-
     <string name="empty_description">Description cannot be empty.</string>
     <string name="empty_image">Must add an image to post.</string>
 </resources>

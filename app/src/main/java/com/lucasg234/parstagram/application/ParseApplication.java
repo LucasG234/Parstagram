@@ -8,6 +8,10 @@ import com.lucasg234.parstagram.models.Post;
 import com.parse.Parse;
 import com.parse.ParseObject;
 
+/**
+ * Application class which configures Parse Server connection
+ * First created class which runs on startup
+ */
 public class ParseApplication extends Application {
     @Override
     public void onCreate() {

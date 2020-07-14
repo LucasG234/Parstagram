@@ -8,7 +8,10 @@ import androidx.annotation.Nullable;
 
 import com.parse.ParseUser;
 
-// Class which acts similar to feed, but only shows current User's posts
+/**
+ * Fragment which is held within MainActivity
+ * Identical function to FeedFragment but only displays posts created by the current user
+ */
 public class ProfileFragment extends FeedFragment {
 
     public static ProfileFragment newInstance() {
