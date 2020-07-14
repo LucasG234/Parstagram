@@ -47,7 +47,8 @@ public class ComposeFragment extends Fragment {
 
     private FragmentComposeBinding mBinding;
     private File mPhotoFile;
-
+    // Store indeterminate progress bar after it is inflated
+    private View mProgressBar;
 
     public ComposeFragment() {
         // Required empty public constructor
@@ -96,7 +97,12 @@ public class ComposeFragment extends Fragment {
                 }
                 ParseUser currentUser = ParseUser.getCurrentUser();
                 // Enable indeterminate progress bar before we attempt to save the post
-                mBinding.progressBarCompose.setVisibility(View.VISIBLE);
+                if(mProgressBar == null) {
+                    mProgressBar = mBinding.composeProgressBarStub.inflate();
+                }
+                else {
+                    mProgressBar.setVisibility(View.VISIBLE);
+                }
                 savePost(description, currentUser, mPhotoFile);
             }
         });
@@ -147,11 +153,11 @@ public class ComposeFragment extends Fragment {
                     Log.e(TAG, "Error while saving post", e);
                     Toast.makeText(getContext(),
                             getString(R.string.error_image_save), Toast.LENGTH_SHORT).show();
-                    mBinding.progressBarCompose.setVisibility(View.INVISIBLE);
+                    mProgressBar.setVisibility(View.INVISIBLE);
                     return;
                 }
                 Log.i(TAG, "Saved post successfully");
-                mBinding.progressBarCompose.setVisibility(View.INVISIBLE);
+                mProgressBar.setVisibility(View.INVISIBLE);
                 mBinding.editTextDescription.setText(null);
                 mBinding.imagePostPreview.setImageResource(0);
             }
